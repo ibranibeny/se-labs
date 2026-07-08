@@ -180,6 +180,160 @@ The same core management capabilities apply across the Arc "machines" services:
 control-plane cost. Turn on paid services deliberately, where they deliver value.
 </div>
 
+## Hands-on (optional): Evaluate Azure Arc on an Azure VM
+
+You can *see* this value on a real machine by evaluating Azure Arc on an **Azure VM** made
+to look like an on-premises server — running **Windows + SQL Server Enterprise (Evaluation)**
+in **Indonesia Central** (`indonesiacentral`).
+
+<div class="notice--warning" markdown="1">
+**Evaluation only.** Installing Azure Arc-enabled servers on an Azure VM is supported **for
+testing only** — it's not for production (Azure VMs already have native Azure capabilities).
+Follow the official procedure: [Evaluate Azure Arc-enabled servers on an Azure virtual machine](https://learn.microsoft.com/azure/azure-arc/servers/plan-evaluate-on-azure-virtual-machine).
+</div>
+
+After onboarding you'll see **two** resources for the same VM: the Azure VM
+(`Microsoft.Compute/virtualMachines` — the virtual hardware / power state) and the Arc
+resource (`Microsoft.HybridCompute/machines` — the guest OS managed by Arc).
+
+### Prerequisites
+
+- **Virtual Machine Contributor** on the VM, plus **Azure Connected Machine Resource
+  Administrator** (or **Contributor**) on the resource group.
+- Azure CLI signed in (`az login`) and a subscription with capacity in `indonesiacentral`.
+
+### Step 1 · Create *or* check the VM (with availability + power-state check)
+
+This `az` CLI block checks whether the VM already exists and whether it's **running or shut
+down** — starting it if needed, or creating it if it doesn't exist.
+
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+
+export LOCATION="indonesiacentral"
+export RG="rg-arc-eval"
+export VM_NAME="arc-eval-sql"
+export VM_SIZE="Standard_D4s_v5"
+export ADMIN_USER="azureuser"
+read -rsp "Enter a strong VM admin password: " ADMIN_PASSWORD; echo
+
+az group create --name "$RG" --location "$LOCATION" -o none
+
+# --- Check VM availability & power state ---
+check_vm() {
+  if az vm show -g "$RG" -n "$VM_NAME" &>/dev/null; then
+    local power
+    power=$(az vm show -d -g "$RG" -n "$VM_NAME" --query powerState -o tsv)
+    echo "VM '$VM_NAME' exists — power state: ${power:-unknown}"
+    if [ "$power" != "VM running" ]; then
+      echo "VM is not running — starting it..."
+      az vm start -g "$RG" -n "$VM_NAME"
+    fi
+    return 0
+  fi
+  echo "VM '$VM_NAME' not found."
+  return 1
+}
+
+# Create the VM only if the check reports it is missing
+if ! check_vm; then
+  echo "Creating Windows Server 2022 VM in $LOCATION..."
+  az vm create \
+    --resource-group "$RG" --name "$VM_NAME" \
+    --image "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition:latest" \
+    --size "$VM_SIZE" --admin-username "$ADMIN_USER" --admin-password "$ADMIN_PASSWORD" \
+    --public-ip-sku Standard --nsg-rule NONE
+fi
+```
+
+### Step 2 · Prepare the VM to look like on-premises (Microsoft Learn procedure)
+
+Run in-guest (no RDP needed) to set the evaluation override, disable the Azure Guest Agent,
+and block **both** IMDS endpoints — exactly as the docs require:
+
+```bash
+az vm run-command invoke -g "$RG" -n "$VM_NAME" --command-id RunPowerShellScript --scripts '
+[System.Environment]::SetEnvironmentVariable("MSFT_ARC_TEST","true",[System.EnvironmentVariableTarget]::Machine)
+Set-Service WindowsAzureGuestAgent -StartupType Disabled -Verbose
+Stop-Service WindowsAzureGuestAgent -Force -Verbose
+New-NetFirewallRule -Name BlockAzureIMDS -DisplayName "Block access to Azure IMDS" -Enabled True -Profile Any -Direction Outbound -Action Block -RemoteAddress 169.254.169.254
+New-NetFirewallRule -Name BlockAzureLocalIMDS -DisplayName "Block access to Azure Local IMDS" -Enabled True -Profile Any -Direction Outbound -Action Block -RemoteAddress 169.254.169.253
+'
+```
+
+<div class="notice--info" markdown="1">
+Also **remove any VM extensions** first (e.g., Azure Monitor Agent). A fresh VM created in
+Step 1 has none. Blocking `169.254.169.254` (Azure) and `169.254.169.253` (Azure Local)
+makes the Arc IMDS the only one available.
+</div>
+
+### Step 3 · Install SQL Server 2022 Enterprise (Evaluation)
+
+```bash
+az vm run-command invoke -g "$RG" -n "$VM_NAME" --command-id RunPowerShellScript --scripts '
+$w="C:\ArcLab"; New-Item -ItemType Directory -Force -Path $w | Out-Null
+Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/p/?linkid=2215158" -OutFile "$w\SQL2022-SSEI-Eval.exe"
+& "$w\SQL2022-SSEI-Eval.exe" /ACTION=Download /MEDIATYPE=CAB /MEDIAPATH=$w /QUIET | Out-Null
+$box=Get-ChildItem $w -Filter "SQLServer2022-*.exe" | Select-Object -First 1
+& $box.FullName /X:"$w\media" /Q | Out-Null
+& "$w\media\setup.exe" /Q /ACTION=Install /FEATURES=SQLENGINE /INSTANCENAME=MSSQLSERVER /SQLSYSADMINACCOUNTS="BUILTIN\Administrators" /TCPENABLED=1 /IACCEPTSQLSERVERLICENSETERMS /UPDATEENABLED=0
+'
+```
+
+No product key = **Evaluation (Enterprise features, 180-day trial)**.
+
+### Step 4 · Onboard the VM to Azure Arc
+
+Create an onboarding service principal, then connect the agent (the `MSFT_ARC_TEST` override
+from Step 2 lets the agent onboard an Azure VM for evaluation):
+
+```bash
+SUB=$(az account show --query id -o tsv); TENANT=$(az account show --query tenantId -o tsv)
+SP=$(az ad sp create-for-rbac --name "sp-arc-eval" --role "Azure Connected Machine Onboarding" \
+     --scopes "/subscriptions/$SUB/resourceGroups/$RG" -o json)
+APPID=$(echo "$SP" | python3 -c "import sys,json;print(json.load(sys.stdin)['"'"'appId'"'"'])")
+SECRET=$(echo "$SP" | python3 -c "import sys,json;print(json.load(sys.stdin)['"'"'password'"'"'])")
+
+az vm run-command invoke -g "$RG" -n "$VM_NAME" --command-id RunPowerShellScript --scripts "
+Invoke-WebRequest -Uri https://aka.ms/AzureConnectedMachineAgent -OutFile C:\ArcLab\azcm.msi
+Start-Process msiexec.exe -ArgumentList '/i C:\ArcLab\azcm.msi /qn' -Wait
+& \"\$env:ProgramFiles\AzureConnectedMachineAgent\azcmagent.exe\" connect ``
+  --service-principal-id $APPID --service-principal-secret $SECRET ``
+  --tenant-id $TENANT --subscription-id $SUB --resource-group $RG --location $LOCATION
+"
+```
+
+### Step 5 · Enable SQL Server on the Arc machine
+
+```bash
+az connectedmachine extension create \
+  --machine-name "$VM_NAME" --name "WindowsAgent.SqlServer" \
+  --resource-group "$RG" --location "$LOCATION" \
+  --type "WindowsAgent.SqlServer" --publisher "Microsoft.AzureData" \
+  --settings '{"SqlManagement":{"IsEnabled":true},"LicenseType":"LicenseOnly","ExcludedSqlInstances":[]}'
+```
+
+(Evaluation edition has no Software Assurance → license type **`LicenseOnly`**.)
+
+### Verify & re-check power state
+
+```bash
+# Arc resource is Connected
+az connectedmachine show -g "$RG" -n "$VM_NAME" --query "{name:name,status:status}" -o table
+# VM hardware power state (running / deallocated)
+az vm show -d -g "$RG" -n "$VM_NAME" --query powerState -o tsv
+```
+
+### Clean up
+
+```bash
+az group delete --name "$RG" --yes --no-wait
+az ad sp delete --id "$APPID"
+```
+
+*Procedure and firewall rules per [Microsoft Learn — Evaluate Azure Arc-enabled servers on an Azure virtual machine](https://learn.microsoft.com/azure/azure-arc/servers/plan-evaluate-on-azure-virtual-machine).*
+
 ## Test your understanding
 
 1. Which Azure service gives you a **single query** across all hybrid machines?
