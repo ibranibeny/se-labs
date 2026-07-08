@@ -25,6 +25,10 @@ layout: single
 
 {{ content }}
 
+{% if mod.source_site %}
+<p class="lab-source">&#128279; Source workshop: <a href="{{ mod.source_site }}">{{ mod.source_site }}</a>{% if mod.source_repo %} &middot; <a href="{{ mod.source_repo }}">GitHub repo</a>{% endif %}</p>
+{% endif %}
+
 {% comment %} Smart Previous / Next navigation within the same module {% endcomment %}
 {% assign labs = site.labs | where: "module", page.module | sort: 'nav_order' %}
 {% assign total = labs | size %}
@@ -34,6 +38,34 @@ layout: single
 {% endfor %}
 {% assign previdx = idx | minus: 1 %}
 {% assign nextidx = idx | plus: 1 %}
+{% assign prev = labs[previdx] %}
+{% assign nextlab = labs[nextidx] %}
+
+{% comment %} Floating overlay prev/next — fixed to the viewport so it follows the scroll {% endcomment %}
+<div class="lab-floatnav" aria-label="Lab quick navigation">
+  {% if idx > 0 %}
+    <a class="lab-floatnav__btn lab-floatnav__prev" href="{{ prev.url | relative_url }}" aria-label="Previous: {{ prev.title }}">
+      <span class="lab-floatnav__icon" aria-hidden="true">&larr;</span>
+      <span class="lab-floatnav__label">{{ prev.title }}</span>
+    </a>
+  {% elsif mod %}
+    <a class="lab-floatnav__btn lab-floatnav__prev" href="{{ mod.url | relative_url }}" aria-label="Module home">
+      <span class="lab-floatnav__icon" aria-hidden="true">&larr;</span>
+      <span class="lab-floatnav__label">Module home</span>
+    </a>
+  {% endif %}
+  {% if nextidx < total %}
+    <a class="lab-floatnav__btn lab-floatnav__next" href="{{ nextlab.url | relative_url }}" aria-label="Next: {{ nextlab.title }}">
+      <span class="lab-floatnav__label">{{ nextlab.title }}</span>
+      <span class="lab-floatnav__icon" aria-hidden="true">&rarr;</span>
+    </a>
+  {% elsif mod %}
+    <a class="lab-floatnav__btn lab-floatnav__next" href="{{ mod.url | relative_url }}" aria-label="Back to module">
+      <span class="lab-floatnav__label">Back to module</span>
+      <span class="lab-floatnav__icon" aria-hidden="true">&rarr;</span>
+    </a>
+  {% endif %}
+</div>
 
 <nav class="lab-nav" aria-label="Lab navigation">
   {% if idx > 0 %}

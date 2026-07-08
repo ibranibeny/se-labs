@@ -7,6 +7,8 @@ duration_total: "~3.5 hours"
 order: 5
 icon: "fas fa-shield-halved"
 color: "#B4009E"
+source_site: "https://ibranibeny.github.io/network-security-workshop/"
+source_repo: "https://github.com/ibranibeny/network-security-workshop"
 ---
 
 # Azure Network Security — Defense-in-Depth

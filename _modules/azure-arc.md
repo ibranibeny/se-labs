@@ -7,6 +7,8 @@ duration_total: "~2.5 hours"
 order: 1
 icon: "fas fa-cloud"
 color: "#0078D4"
+source_site: "https://ibranibeny.github.io/azure-arc-workshop/"
+source_repo: "https://github.com/ibranibeny/azure-arc-workshop"
 ---
 
 # Azure Arc

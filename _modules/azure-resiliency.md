@@ -7,6 +7,8 @@ duration_total: "~3 hours"
 order: 3
 icon: "fas fa-shield-alt"
 color: "#107C10"
+source_site: "https://ibranibeny.github.io/azure-resiliency-workshop/"
+source_repo: "https://github.com/ibranibeny/azure-resiliency-workshop"
 ---
 
 # Azure Resiliency & Disaster Recovery

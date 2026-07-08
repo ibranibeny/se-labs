@@ -28,3 +28,11 @@ layout: single
 <p style="margin-top:2rem;">
   <a class="btn btn--light-outline" href="{{ '/modules/' | relative_url }}">&larr; All modules</a>
 </p>
+
+{% if page.source_site or page.source_repo %}
+<h2 id="reference">Reference</h2>
+<ul class="module-refs">
+  {% if page.source_site %}<li>&#128214; Original workshop (GitHub Pages): <a href="{{ page.source_site }}">{{ page.source_site }}</a></li>{% endif %}
+  {% if page.source_repo %}<li>&#128187; Source repository: <a href="{{ page.source_repo }}">{{ page.source_repo }}</a></li>{% endif %}
+</ul>
+{% endif %}

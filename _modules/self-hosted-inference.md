@@ -7,6 +7,8 @@ duration_total: "~2 hours"
 order: 2
 icon: "fas fa-microchip"
 color: "#7B2FBF"
+source_site: "https://ibranibeny.github.io/sglang-azure-workshop/"
+source_repo: "https://github.com/ibranibeny/sglang-azure-workshop"
 ---
 
 # Self-Hosted Inference on Azure GPU

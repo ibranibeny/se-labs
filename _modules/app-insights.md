@@ -7,6 +7,8 @@ duration_total: "~1.5 hours"
 order: 4
 icon: "fas fa-chart-line"
 color: "#8661C5"
+source_site: "https://ibranibeny.github.io/ApplicationInsights-AzureDemo/"
+source_repo: "https://github.com/ibranibeny/ApplicationInsights-AzureDemo"
 ---
 
 # Observability with Azure Monitor & Application Insights

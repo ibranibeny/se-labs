@@ -18,13 +18,13 @@ _layouts/     # module.html, lab.html
 
 ## Modules
 
-| Module | Levels | Labs |
-|--------|--------|------|
-| [Azure Arc](_modules/azure-arc.md) | L100–L400 | 4 |
-| [Self-Hosted Inference](_modules/self-hosted-inference.md) | L200–L400 | 4 |
-| [Azure Resiliency & DR](_modules/azure-resiliency.md) | L200–L400 | 4 |
-| [Observability with App Insights](_modules/app-insights.md) | L100–L400 | 4 |
-| [Network Security (Defense-in-Depth)](_modules/network-security.md) | L100–L400 | 4 |
+| Module | Levels | Labs | Source |
+|--------|--------|------|--------|
+| [Azure Arc](_modules/azure-arc.md) | L100–L400 | 4 | [site](https://ibranibeny.github.io/azure-arc-workshop/) · [repo](https://github.com/ibranibeny/azure-arc-workshop) |
+| [Self-Hosted Inference](_modules/self-hosted-inference.md) | L200–L400 | 4 | [site](https://ibranibeny.github.io/sglang-azure-workshop/) · [repo](https://github.com/ibranibeny/sglang-azure-workshop) |
+| [Azure Resiliency & DR](_modules/azure-resiliency.md) | L200–L400 | 4 | [site](https://ibranibeny.github.io/azure-resiliency-workshop/) · [repo](https://github.com/ibranibeny/azure-resiliency-workshop) |
+| [Observability with App Insights](_modules/app-insights.md) | L100–L400 | 4 | [site](https://ibranibeny.github.io/ApplicationInsights-AzureDemo/) · [repo](https://github.com/ibranibeny/ApplicationInsights-AzureDemo) |
+| [Network Security (Defense-in-Depth)](_modules/network-security.md) | L100–L400 | 4 | [site](https://ibranibeny.github.io/network-security-workshop/) · [repo](https://github.com/ibranibeny/network-security-workshop) |
 
 ### Azure Arc labs
 
