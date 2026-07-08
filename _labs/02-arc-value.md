@@ -247,6 +247,60 @@ if ! check_vm; then
 fi
 ```
 
+**PowerShell option** — the same availability + power-state check, to run in `pwsh` /
+Windows PowerShell. A **complete ready-to-run script** is also available:
+[`scripts/evaluate-arc-on-azure-vm.ps1`](https://github.com/ibranibeny/azure-arc-workshop/blob/main/scripts/evaluate-arc-on-azure-vm.ps1)
+(run `./evaluate-arc-on-azure-vm.ps1`, or `-Cleanup` to tear everything down).
+
+```powershell
+$LOCATION   = "indonesiacentral"
+$RG         = "rg-arc-eval"
+$VM_NAME    = "arc-eval-sql"
+$VM_SIZE    = "Standard_D4s_v5"
+$ADMIN_USER = "azureuser"
+$sec = Read-Host "Enter a strong VM admin password" -AsSecureString
+$ADMIN_PASSWORD = [System.Net.NetworkCredential]::new("", $sec).Password
+
+az group create --name $RG --location $LOCATION -o none
+
+function Test-Vm {
+    az vm show -g $RG -n $VM_NAME 2>$null | Out-Null
+    if ($LASTEXITCODE -eq 0) {
+        $power = az vm show -d -g $RG -n $VM_NAME --query powerState -o tsv
+        Write-Host "VM '$VM_NAME' exists - power state: $power"
+        if ($power -ne "VM running") {
+            Write-Host "VM is not running - starting it..."
+            az vm start -g $RG -n $VM_NAME
+        }
+        return $true
+    }
+    Write-Host "VM '$VM_NAME' not found."
+    return $false
+}
+
+if (-not (Test-Vm)) {
+    Write-Host "Creating Windows Server 2022 VM in $LOCATION..."
+    az vm create `
+        --resource-group $RG --name $VM_NAME `
+        --image "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition:latest" `
+        --size $VM_SIZE --admin-username $ADMIN_USER --admin-password $ADMIN_PASSWORD `
+        --public-ip-sku Standard --nsg-rule NONE
+}
+```
+
+<div class="notice--info" markdown="1">
+Steps 2, 3, and 5 are the **same `az vm run-command` / `az` commands** — they run
+identically in PowerShell. For Step 4, parse the service principal in PowerShell like this:
+
+```powershell
+$SUB    = az account show --query id -o tsv
+$TENANT = az account show --query tenantId -o tsv
+$sp = az ad sp create-for-rbac --name "sp-arc-eval" --role "Azure Connected Machine Onboarding" `
+        --scopes "/subscriptions/$SUB/resourceGroups/$RG" -o json | ConvertFrom-Json
+$APPID = $sp.appId; $SECRET = $sp.password
+```
+</div>
+
 ### Step 2 · Prepare the VM to look like on-premises (Microsoft Learn procedure)
 
 Run in-guest (no RDP needed) to set the evaluation override, disable the Azure Guest Agent,
