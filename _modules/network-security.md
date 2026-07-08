@@ -4,7 +4,7 @@ slug: network-security
 excerpt: "Build a layered defense-in-depth network — WAF, Azure Firewall Premium + IDPS, segmentation, forced tunneling, and Bastion-only access — then attack it and read the evidence."
 level_range: "L100–L400"
 duration_total: "~3.5 hours"
-order: 5
+order: 6
 icon: "fas fa-shield-halved"
 color: "#B4009E"
 source_site: "https://ibranibeny.github.io/network-security-workshop/"

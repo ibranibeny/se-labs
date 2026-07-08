@@ -6,7 +6,7 @@ level: 200
 duration: "20 min"
 doc_type: "Concept"
 persona: "AI engineer / architect"
-learning_path: "Self-Hosted Inference"
+learning_path: "Foundry BYOM"
 nav_order: 5
 report_issue: "https://github.com/ibranibeny/se-labs/issues/new"
 ---

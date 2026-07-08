@@ -4,7 +4,7 @@ slug: azure-resiliency
 excerpt: "Simulate disaster recovery and automatic multi-region failover with Azure Front Door, SQL Failover Groups, and hub-spoke networking."
 level_range: "L200–L400"
 duration_total: "~3 hours"
-order: 3
+order: 4
 icon: "fas fa-shield-alt"
 color: "#107C10"
 source_site: "https://ibranibeny.github.io/azure-resiliency-workshop/"

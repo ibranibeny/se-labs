@@ -4,7 +4,7 @@ slug: app-insights
 excerpt: "Instrument a .NET 8 API, deploy it to Azure, and watch every Application Insights experience light up with real telemetry."
 level_range: "L100–L400"
 duration_total: "~1.5 hours"
-order: 4
+order: 5
 icon: "fas fa-chart-line"
 color: "#8661C5"
 source_site: "https://ibranibeny.github.io/ApplicationInsights-AzureDemo/"

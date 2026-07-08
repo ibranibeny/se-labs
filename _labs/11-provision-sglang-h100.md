@@ -1,13 +1,13 @@
 ---
 title: "Provision SGLang on an H100"
-module: self-hosted-inference
+module: sglang-endpoint
 excerpt: "Stand up an Azure H100 VM and serve Qwen3.6-35B with SGLang — driven entirely by az vm run-command."
 level: 300
 duration: "35 min"
 doc_type: "How-to"
 persona: "AI engineer / cloud engineer"
-learning_path: "Self-Hosted Inference"
-nav_order: 6
+learning_path: "SGLang Endpoint"
+nav_order: 22
 report_issue: "https://github.com/ibranibeny/se-labs/issues/new"
 ---
 

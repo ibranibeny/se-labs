@@ -1,23 +1,29 @@
 ---
-title: "Self-Hosted Inference"
+title: "Foundry: Bring Your Own Model"
 slug: self-hosted-inference
-excerpt: "Serve an OpenAI-compatible LLM from your own Azure H100 with SGLang, then wire it into Microsoft Foundry using Bring Your Own Model."
+excerpt: "Connect a self-hosted, OpenAI-compatible model endpoint to a Microsoft Foundry agent using Bring Your Own Model (BYOM)."
 level_range: "L200–L400"
-duration_total: "~2 hours"
-order: 2
-icon: "fas fa-microchip"
+duration_total: "~50 min"
+order: 3
+icon: "fas fa-robot"
 color: "#7B2FBF"
 source_site: "https://ibranibeny.github.io/sglang-azure-workshop/"
 source_repo: "https://github.com/ibranibeny/sglang-azure-workshop"
 ---
 
-# Self-Hosted Inference on Azure GPU
+# Foundry: Bring Your Own Model (BYOM)
 
-**Run Qwen3.6-35B on one H100 and wire it into Microsoft Foundry.**
+**Connect your own model endpoint to a Microsoft Foundry agent.**
 
-Serve an OpenAI-compatible endpoint from a single Azure H100 with **SGLang**, guard it
-with an **HTTPS + API-key gateway** (Caddy), then connect it to a **Microsoft Foundry**
-agent using **Bring Your Own Model (BYOM)** — no model weights ever leave your VM.
+Foundry Agent Service can talk to a model that lives behind **your own gateway** instead of
+only the models in Foundry's catalog. Here we connect the self-hosted, OpenAI-compatible
+**SGLang endpoint** (Qwen3.6-35B on an H100) to a Foundry agent — no model weights ever
+leave your VM.
+
+<div class="notice--info" markdown="1">
+**Prerequisite:** deploy the endpoint first in the
+[SGLang Endpoint on Azure H100]({{ '/modules/sglang-endpoint/' | relative_url }}) module.
+</div>
 
 ![Foundry routes agent traffic through your gateway to the model behind it](https://ibranibeny.github.io/sglang-azure-workshop/images/foundry-byom-gateway.png)
 *Foundry Agent Service sends agent requests to your gateway, which forwards them to the model hosted behind it. Source: sglang-azure-workshop.*
@@ -35,8 +41,6 @@ agent using **Bring Your Own Model (BYOM)** — no model weights ever leave your
 ## What you will learn
 
 - **L200** — What *Bring Your Own Model* means and when to self-host inference.
-- **L300** — Provision SGLang serving Qwen3.6-35B on an Azure H100 VM.
-- **L300** — Secure the endpoint with an API key and a Caddy HTTPS gateway.
 - **L400** — Connect the endpoint to a Microsoft Foundry agent (BYOM), field by field.
 
 ## Prerequisites

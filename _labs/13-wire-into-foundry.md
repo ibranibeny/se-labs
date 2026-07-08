@@ -6,8 +6,8 @@ level: 400
 duration: "30 min"
 doc_type: "Build lab"
 persona: "AI engineer / architect"
-learning_path: "Self-Hosted Inference"
-nav_order: 8
+learning_path: "Foundry BYOM"
+nav_order: 6
 featured: true
 report_issue: "https://github.com/ibranibeny/se-labs/issues/new"
 ---
@@ -23,6 +23,11 @@ report_issue: "https://github.com/ibranibeny/se-labs/issues/new"
 The model is running and secured. Now you connect it to **Microsoft Foundry** so agents can
 use it — following the official *Bring Your Own Model* flow with the real parameters from
 your SGLang deployment.
+
+<div class="notice--info" markdown="1">
+**Prerequisite:** deploy and secure the endpoint first in the
+[SGLang Endpoint on Azure H100]({{ '/modules/sglang-endpoint/' | relative_url }}) module.
+</div>
 
 ## Parameters (ready to copy)
 

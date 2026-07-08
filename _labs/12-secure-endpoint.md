@@ -1,13 +1,13 @@
 ---
 title: "Secure the endpoint (API key + Caddy)"
-module: self-hosted-inference
+module: sglang-endpoint
 excerpt: "Protect the /v1 endpoint with a self-generated 256-bit API key behind a Caddy HTTPS gateway."
 level: 300
 duration: "20 min"
 doc_type: "How-to"
 persona: "AI engineer / cloud engineer"
-learning_path: "Self-Hosted Inference"
-nav_order: 7
+learning_path: "SGLang Endpoint"
+nav_order: 23
 report_issue: "https://github.com/ibranibeny/se-labs/issues/new"
 ---
 
@@ -82,8 +82,9 @@ curl -s https://<your-domain>/v1/chat/completions \
 
 <div class="notice--info" markdown="1">
 For **direct** calls, use the model's full HuggingFace id (`Qwen/Qwen3.6-35B-A3B-FP8`).
-When you register the model in **Foundry** next, the model id must have **no slash**
-(`Qwen3.6-35B-A3B-FP8`) because ModelGateway only allows letters/digits/`-`/`_`/`.`.
+When you register the model in **Foundry** (see the *Foundry: Bring Your Own Model* module),
+the model id must have **no slash** (`Qwen3.6-35B-A3B-FP8`) because ModelGateway only allows
+letters/digits/`-`/`_`/`.`.
 </div>
 
 ## Summary of learnings
