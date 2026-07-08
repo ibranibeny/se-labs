@@ -27,6 +27,7 @@ _layouts/     # module.html, lab.html
 | [Observability with App Insights](_modules/app-insights.md) | L100–L400 | 4 | [site](https://ibranibeny.github.io/ApplicationInsights-AzureDemo/) · [repo](https://github.com/ibranibeny/ApplicationInsights-AzureDemo) |
 | [Network Security (Defense-in-Depth)](_modules/network-security.md) | L100–L400 | 4 | [site](https://ibranibeny.github.io/network-security-workshop/) · [repo](https://github.com/ibranibeny/network-security-workshop) |
 | [Spec-Driven Development (Spec Kit)](_modules/spec-kit.md) | L100–L300 | 3 | [site](https://ibranibeny.github.io/Overview-Github-Spec-kit/) · [repo](https://github.com/ibranibeny/Overview-Github-Spec-kit) |
+| [KAITO on AKS](_modules/kaito-aks.md) | L100–L300 | 3 | [site](https://ibranibeny.github.io/Kaito-Deployment/) · [repo](https://github.com/ibranibeny/Kaito-Deployment) |
 
 ### Azure Arc labs
 
