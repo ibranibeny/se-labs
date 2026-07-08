@@ -158,6 +158,51 @@ virtualization) is illustrated here:
 ![Physical-core licensing with unlimited virtualization](https://learn.microsoft.com/sql/sql-server/azure-arc/media/extended-security-updates/physical-core-licensing-with-vms.svg?view=sql-server-ver17)
 *Physical-core licensing with unlimited virtualization for SQL Server ESUs. Source: Microsoft Learn.*
 
+### Software Assurance & Azure Hybrid Benefit
+
+Two licensing concepts strongly affect Azure Arc cost. **Software Assurance (SA)** unlocks
+free Arc management services and advanced SQL features; **Azure Hybrid Benefit (AHB)** is a
+separate program that cuts the cost of Azure VMs/AKS by reusing on-prem licenses.
+
+**1 · With vs without Software Assurance**
+
+| Capability | Without SA (License only) | With SA / subscription / PAYG / Azure VM |
+|------------|---------------------------|------------------------------------------|
+| Arc control plane (inventory, RBAC, tags, Resource Graph, extensions) | Free | Free |
+| Windows Server management (Update Manager, Change Tracking, Machine Configuration, Windows Admin Center in Azure, Best Practices Assessment, Remote Support) | **Pay-as-you-go** | **Free** (excl. log ingestion) |
+| SQL: connect to Arc, inventory, migration readiness, Defender, Entra auth, Purview | Yes | Yes |
+| SQL advanced (Best Practices Assessment, Monitoring, local backups, free upgrade, HA/DR $0 passive) | No | **Yes** |
+| SQL Extended Security Updates (ESU) eligibility | No | **Yes** |
+
+**2 · Even with Software Assurance, these still cost**
+
+| Still billed (even with SA) | Notes |
+|-----------------------------|-------|
+| Azure Monitor / Log Analytics | Data ingestion, retention, export |
+| Microsoft Defender for Servers / SQL | Paid plans (free tier = basic secure score only) |
+| Microsoft Sentinel | Billed per data |
+| Extended Security Updates (ESU) | Paid subscription (qualifying passive HA replica = $0 meter) |
+| SQL pay-as-you-go vCore hours | If using PAYG instead of a BYO license |
+| Other attached Azure services | Key Vault, Private Link, Automation, egress |
+
+**3 · Software Assurance vs Azure Hybrid Benefit**
+
+| | Software Assurance (SA) | Azure Hybrid Benefit (AHB) |
+|---|-------------------------|----------------------------|
+| Purpose | Free Arc management + advanced SQL features + ESU eligibility | Reuse on-prem licenses to cut Azure VM / AKS / Local cost |
+| Applies to | Arc-enabled servers & SQL (on-prem / other cloud) | Azure VMs, AKS, Azure Local |
+| Requires | Active SA or subscription license | Windows/SQL license with active SA or subscription |
+
+<div class="notice--info" markdown="1">
+**Sources (Microsoft Learn):**
+[Windows Server Management enabled by Azure Arc](https://learn.microsoft.com/azure/azure-arc/servers/windows-server-management-overview) ·
+[Modernize server management (pricing)](https://learn.microsoft.com/azure/azure-arc/servers/modernize-server-management) ·
+[SQL feature availability by license type](https://learn.microsoft.com/sql/sql-server/azure-arc/overview?view=sql-server-ver17#feature-availability-depending-on-license-type) ·
+[Manage licensing & billing (SQL)](https://learn.microsoft.com/sql/sql-server/azure-arc/manage-license-billing?view=sql-server-ver17) ·
+[SQL ESU enabled by Azure Arc](https://learn.microsoft.com/sql/sql-server/azure-arc/extended-security-updates?view=sql-server-ver17) ·
+[Azure Hybrid Benefit for Windows Server](https://learn.microsoft.com/windows-server/get-started/azure-hybrid-benefit)
+</div>
+
 <div class="notice--success" markdown="1">
 **Tip:** Start free — onboard machines and build inventory, RBAC, and policy at **no control-plane cost**.
 Turn on paid services (Defender, Monitor, ESU, SQL PAYG) deliberately. Estimate combined costs with the
