@@ -13,6 +13,42 @@ layout: single
 
 {{ content }}
 
+{% comment %} Compute prev/next module (by order) for overlay + bottom nav {% endcomment %}
+{% assign mods = site.modules | sort: 'order' %}
+{% assign mtotal = mods | size %}
+{% assign midx = 0 %}
+{% for m in mods %}{% if m.url == page.url %}{% assign midx = forloop.index0 %}{% endif %}{% endfor %}
+{% assign mprevidx = midx | minus: 1 %}
+{% assign mnextidx = midx | plus: 1 %}
+{% assign mprev = mods[mprevidx] %}
+{% assign mnext = mods[mnextidx] %}
+
+{% comment %} Floating overlay prev/next — fixed to the viewport so it follows the scroll {% endcomment %}
+<div class="lab-floatnav" aria-label="Module quick navigation">
+  {% if midx > 0 %}
+    <a class="lab-floatnav__btn lab-floatnav__prev" href="{{ mprev.url | relative_url }}" aria-label="Previous module: {{ mprev.title }}">
+      <span class="lab-floatnav__icon" aria-hidden="true">&larr;</span>
+      <span class="lab-floatnav__label">{{ mprev.title }}</span>
+    </a>
+  {% else %}
+    <a class="lab-floatnav__btn lab-floatnav__prev" href="{{ '/' | relative_url }}" aria-label="Home">
+      <span class="lab-floatnav__icon" aria-hidden="true">&larr;</span>
+      <span class="lab-floatnav__label">Home</span>
+    </a>
+  {% endif %}
+  {% if mnextidx < mtotal %}
+    <a class="lab-floatnav__btn lab-floatnav__next" href="{{ mnext.url | relative_url }}" aria-label="Next module: {{ mnext.title }}">
+      <span class="lab-floatnav__label">{{ mnext.title }}</span>
+      <span class="lab-floatnav__icon" aria-hidden="true">&rarr;</span>
+    </a>
+  {% else %}
+    <a class="lab-floatnav__btn lab-floatnav__next" href="{{ '/modules/' | relative_url }}" aria-label="All modules">
+      <span class="lab-floatnav__label">All modules</span>
+      <span class="lab-floatnav__icon" aria-hidden="true">&rarr;</span>
+    </a>
+  {% endif %}
+</div>
+
 <h2 id="labs-in-this-module">Labs in this module</h2>
 {% assign labs = site.labs | where: "module", page.slug | sort: "nav_order" %}
 <div class="lab-cards">
@@ -25,7 +61,20 @@ layout: single
 {% endfor %}
 </div>
 
-<p style="margin-top:2rem;">
+<nav class="lab-nav" aria-label="Module navigation">
+  {% if midx > 0 %}
+    <a class="btn btn--light-outline" href="{{ mprev.url | relative_url }}">&larr; {{ mprev.title }}</a>
+  {% else %}
+    <a class="btn btn--light-outline" href="{{ '/' | relative_url }}">&larr; Home</a>
+  {% endif %}
+  {% if mnextidx < mtotal %}
+    <a class="btn btn--primary" href="{{ mnext.url | relative_url }}">{{ mnext.title }} &rarr;</a>
+  {% else %}
+    <a class="btn btn--primary" href="{{ '/modules/' | relative_url }}">All modules &rarr;</a>
+  {% endif %}
+</nav>
+
+<p style="margin-top:1rem;">
   <a class="btn btn--light-outline" href="{{ '/modules/' | relative_url }}">&larr; All modules</a>
 </p>
 
