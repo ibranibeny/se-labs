@@ -24,6 +24,7 @@ _layouts/     # module.html, lab.html
 | [Self-Hosted Inference](_modules/self-hosted-inference.md) | L200–L400 | 4 |
 | [Azure Resiliency & DR](_modules/azure-resiliency.md) | L200–L400 | 4 |
 | [Observability with App Insights](_modules/app-insights.md) | L100–L400 | 4 |
+| [Network Security (Defense-in-Depth)](_modules/network-security.md) | L100–L400 | 4 |
 
 ### Azure Arc labs
 
