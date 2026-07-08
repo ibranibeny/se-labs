@@ -27,10 +27,13 @@ bound to loopback, and front it with an HTTPS gateway — all without SSH, using
 
 | Item | Detail |
 |------|--------|
-| **VM** | `Standard_NC40ads_H100_v5` — 1× NVIDIA H100 NVL, 94 GB, 40 vCPUs |
-| **Model** | `Qwen/Qwen3.6-35B-A3B-FP8` (context 262,144) |
-| **Server** | SGLang on `127.0.0.1:30000` |
-| **Endpoint** | `https://<your-domain>/v1` (region `indonesiacentral`) |
+| **Resource group** | `sglang-rg` |
+| **VM** | `sglang-h100` · `Standard_NC40ads_H100_v5` — 1× NVIDIA H100 NVL, 94 GB, 40 vCPUs |
+| **OS** | Ubuntu 24.04 LTS + NVIDIA GPU driver extension, 512 GB OS disk |
+| **Networking** | `sglang-vnet` / `sglang-subnet` / `sglang-nsg` (inbound 22, 80, 443) + `sglang-pip` |
+| **Model** | any HuggingFace model — default `Qwen/Qwen3.6-35B-A3B-FP8` (`TP_SIZE=1`) |
+| **Serving** | SGLang (`lmsysorg/sglang`) on `127.0.0.1:30000`, Caddy TLS on `:443` |
+| **Endpoint** | `https://<TLS_DOMAIN>/v1` (region `indonesiacentral`) |
 
 <div class="notice--info" markdown="1">
 This lab uses the deploy scripts in the
@@ -40,53 +43,56 @@ first, then run the numbered scripts in order.
 
 ## Prerequisites
 
-- **H100 quota** for `Standard_NC40ads_H100_v5` in your target region.
-- Azure CLI logged in (`az login`) with rights to create VMs and NSG rules.
-- A **DNS name** you control, pointed at the VM's public IP (for HTTPS).
+- **H100 quota** for `Standard_NC40ads_H100_v5` in `indonesiacentral` (40 vCPUs).
+- **Azure CLI** authenticated (`az login`); WSL2/Ubuntu or Linux.
+- A **domain name** (optional) for Let's Encrypt — leave `TLS_DOMAIN` empty for a
+  self-signed cert / IP access.
+- A **Hugging Face token** (`HF_TOKEN`) only if the model is gated.
 
-## Steps
-
-### 1 · Configure
-
-Clone the repo and edit `deploy/config.sh` with your subscription, resource group,
-region, VM name, and domain:
+## Configure (`deploy/config.sh`)
 
 ```bash
 git clone https://github.com/ibranibeny/sglang-azure-workshop.git
-cd sglang-azure-workshop/deploy
-$EDITOR config.sh      # set SUBSCRIPTION, RG, LOCATION, VM_NAME, DOMAIN, ...
+cd sglang-azure-workshop
+$EDITOR deploy/config.sh
 ```
 
-### 2 · Deploy the VM
+Key variables:
+
+| Variable | Default | Purpose |
+|----------|---------|---------|
+| `RESOURCE_GROUP` | `sglang-rg` | Resource group |
+| `LOCATION` | `indonesiacentral` | Azure region |
+| `VM_NAME` | `sglang-h100` | VM name |
+| `VM_SIZE` | `Standard_NC40ads_H100_v5` | 1× H100 NVL (94 GB) |
+| `VM_IMAGE` | `Canonical:ubuntu-24_04-lts:server:latest` | OS image |
+| `MODEL_PATH` | `Qwen/Qwen3.6-35B-A3B-FP8` | Any HuggingFace model |
+| `TP_SIZE` | `1` | Tensor-parallel GPUs |
+| `SGLANG_PORT` | `30000` | Loopback SGLang port |
+| `TLS_DOMAIN` | `openai.contoso.day` | Domain (empty = self-signed cert) |
+| `HF_TOKEN` | *(empty)* | Required only for gated models |
+
+For a gated model, export the token before deploying:
 
 ```bash
-./01-deploy.sh         # create the H100 VM (cloud-init installs drivers + SGLang)
-./02-start-vm.sh       # ensure the VM is running
+export HF_TOKEN=hf_xxxxxxxxxxxxxxxx
 ```
 
-### 3 · Open the gateway ports
+## Deploy
 
 ```bash
-./03-open-nsg.sh       # allow inbound 80/443 for the Caddy HTTPS gateway
-./03b-open-nsg-ports.sh
-./04-check-nsg.sh      # verify the NSG rules
+cd deploy
+bash 00-genkey.sh      # generate the API key → .secrets/api_key
+bash 01-deploy.sh      # create the H100 VM + NVIDIA driver
+bash 03-open-nsg.sh    # open inbound 22 / 80 / 443
+bash 05-run-sglang.sh  # launch SGLang + Caddy (downloads model, starts serving)
 ```
 
-### 4 · Launch SGLang + gateway
+Optional helpers: `02-start-vm.sh` (ensure running), `04-check-nsg.sh` (verify rules),
+`06-watchdog.sh` (auto-restart if a container stops), `99-destroy.sh` (tear everything down).
 
-```bash
-./05-run-sglang.sh     # start SGLang (loopback) + Caddy (HTTPS + API-key gateway)
-```
-
-This binds SGLang to `127.0.0.1:30000` and starts Caddy, which terminates TLS with a
-Let's Encrypt certificate and proxies `/v1` to SGLang. Everything runs via
-`az vm run-command` — **no SSH required**.
-
-### 5 · (Optional) Keep it healthy
-
-```bash
-./06-watchdog.sh       # restart SGLang/Caddy automatically if they stop
-```
+SGLang binds to `127.0.0.1:30000`; Caddy terminates TLS on `:443` (Let's Encrypt when
+`TLS_DOMAIN` is set, otherwise a self-signed cert) and proxies `/v1` to SGLang.
 
 ## Verify
 

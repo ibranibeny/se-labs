@@ -49,9 +49,10 @@ only Caddy restarts; the model stays loaded.
 
 ## How the gateway enforces it
 
-Caddy (configured from `Caddyfile.tmpl`) terminates TLS and requires the key on the
-`api-key` header before proxying to SGLang on `127.0.0.1:30000`. The `/health` path stays
-open (no auth) so you can probe liveness.
+Caddy (configured from `Caddyfile.tmpl`) terminates TLS and requires the API key before
+proxying to SGLang on `127.0.0.1:30000`. Direct clients pass it as a **Bearer** token
+(`Authorization: Bearer <API_KEY>`); Microsoft Foundry BYOM sends it in the **`api-key`**
+header. The `/health` path stays open (no auth) so you can probe liveness.
 
 ## Verify
 
@@ -62,26 +63,27 @@ succeed:
 # No key -> 401 Unauthorized
 curl -s -o /dev/null -w "%{http_code}\n" https://<your-domain>/v1/models
 
-# With key -> 200 OK
+# With key (Bearer) -> 200 OK
 curl -s https://<your-domain>/v1/models \
-  -H "api-key: $API_KEY"
+  -H "Authorization: Bearer $API_KEY"
 ```
 
 A quick chat completion (OpenAI-compatible):
 
 ```bash
 curl -s https://<your-domain>/v1/chat/completions \
-  -H "api-key: $API_KEY" \
+  -H "Authorization: Bearer $API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-        "model": "Qwen3.6-35B-A3B-FP8",
+        "model": "Qwen/Qwen3.6-35B-A3B-FP8",
         "messages": [{"role":"user","content":"Say hello in one sentence."}]
       }'
 ```
 
 <div class="notice--info" markdown="1">
-Note the `model` value is **`Qwen3.6-35B-A3B-FP8`** (no `Qwen/` prefix, no slash). You'll
-use exactly this id when you register the model in Foundry next.
+For **direct** calls, use the model's full HuggingFace id (`Qwen/Qwen3.6-35B-A3B-FP8`).
+When you register the model in **Foundry** next, the model id must have **no slash**
+(`Qwen3.6-35B-A3B-FP8`) because ModelGateway only allows letters/digits/`-`/`_`/`.`.
 </div>
 
 ## Summary of learnings
