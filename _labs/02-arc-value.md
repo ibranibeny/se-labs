@@ -249,8 +249,21 @@ fi
 
 **PowerShell option** — the same availability + power-state check, to run in `pwsh` /
 Windows PowerShell. A **complete ready-to-run script** is also available:
-[`scripts/evaluate-arc-on-azure-vm.ps1`](https://github.com/ibranibeny/azure-arc-workshop/blob/main/scripts/evaluate-arc-on-azure-vm.ps1)
-(run `./evaluate-arc-on-azure-vm.ps1`, or `-Cleanup` to tear everything down).
+[`scripts/evaluate-arc-on-azure-vm.ps1`](https://github.com/ibranibeny/azure-arc-workshop/blob/main/scripts/evaluate-arc-on-azure-vm.ps1).
+
+Download it by cloning the repo, then run from the `scripts` folder:
+
+```powershell
+# Clone the workshop repo and move into the scripts folder
+git clone https://github.com/ibranibeny/azure-arc-workshop.git
+cd azure-arc-workshop/scripts
+
+# Deploy the eval VM + SQL + Arc onboarding (auto-generates a random admin password)
+./evaluate-arc-on-azure-vm.ps1 -ResourceGroup rg-arc-eval
+
+# Tear everything down when finished
+./evaluate-arc-on-azure-vm.ps1 -ResourceGroup rg-arc-eval -Cleanup
+```
 
 ```powershell
 $LOCATION   = "indonesiacentral"
