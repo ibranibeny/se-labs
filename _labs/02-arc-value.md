@@ -38,24 +38,77 @@ remoting) with **one unified Azure platform**.
 ![Azure Arc-enabled servers onboarding and automation](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/hybrid/arc-enabled-servers/media/arc-enabled-servers-onboarding.png)
 *Once onboarded, Arc-enabled servers can be targeted by Azure automation, policy, and security services. Source: Microsoft Learn (Cloud Adoption Framework).*
 
-## The Azure Arc dashboard
+## The Azure Arc management experiences
 
-In the Azure portal, the **Azure Arc center** is your single pane of glass. It lists every
-Arc-enabled resource — servers, SQL Server instances, Kubernetes clusters — with status,
-tags, and drill-down into each resource, exactly like a native Azure VM.
+Once your resources are projected into Azure, the portal gives you a **sequence of
+purpose-built dashboards**. There's a central Arc view first, and then **Windows and SQL
+each have their own dashboard**, followed by assessment, backup, and monitoring.
+
+```mermaid
+%% Colored per the mermaid-diagrams skill
+flowchart LR
+    D[1 - Arc dashboard] --> W[2 - Windows] --> S[3 - SQL] --> B[4 - Best Practices] --> K[5 - Backup] --> M[6 - Monitoring]
+    classDef a fill:#0078D4,stroke:#004578,color:#ffffff;
+    classDef b fill:#107C10,stroke:#0B5A0B,color:#ffffff;
+    classDef c fill:#CC2927,stroke:#8B1A19,color:#ffffff;
+    classDef d fill:#8661C5,stroke:#4B1C77,color:#ffffff;
+    classDef e fill:#D83B01,stroke:#A32D01,color:#ffffff;
+    classDef f fill:#B4009E,stroke:#7a0069,color:#ffffff;
+    class D a
+    class W b
+    class S c
+    class B d
+    class K e
+    class M f
+```
+
+### 1 · Azure Arc dashboard — all resources
+
+A single pane of glass listing every Arc-enabled resource across clouds, with status, tags,
+and drill-down — exactly like a native Azure VM.
 
 ![Azure Arc inventory dashboard](https://learn.microsoft.com/en-us/sql/sql-server/azure-arc/media/migration-assessment/dashboard-inventory.png)
-*The Azure Arc inventory dashboard shows all projected resources in one view. Source: Microsoft Learn.*
+*Central Azure Arc inventory of all projected resources. Source: Microsoft Learn.*
 
-From the dashboard you can:
+### 2 · Windows dashboard — Windows Admin Center in Azure Arc
 
-- **Inventory & search** — see every machine/instance across clouds; query with Azure Resource Graph.
-- **Organize** — group by subscription, resource group, and tags.
-- **Act** — open a resource to apply policy, run commands, enable extensions, or view insights.
-- **Manage with Windows Admin Center** — administer a machine (RDP, Hyper-V, Event Viewer) from the portal, with no VPN or public IP.
+Windows machines get their **own** management view: RDP, Hyper-V, Event Viewer, and more
+from the portal — no VPN or public IP.
 
 ![Windows Admin Center in Azure Arc](https://learn.microsoft.com/en-us/windows-server/manage/media/manage-vm/windows-admin-center-in-azure-arc-overview.png)
-*Windows Admin Center in Azure Arc manages a hybrid machine directly from the portal. Source: Microsoft Learn.*
+*The Windows dashboard — Windows Admin Center in Azure Arc. Source: Microsoft Learn.*
+
+### 3 · SQL dashboard — SQL Server enabled by Azure Arc
+
+SQL Server instances have their **own** dashboard for inventory, configuration, and use
+rights.
+
+![Azure Arc SQL Server dashboard](https://learn.microsoft.com/en-us/sql/sql-server/azure-arc/media/overview/arc-sql-server-dashboard.png)
+*The SQL dashboard — SQL Server enabled by Azure Arc. Source: Microsoft Learn.*
+
+### 4 · Best Practices Assessment (BPA)
+
+Scan SQL configuration against Microsoft best practices and get prioritized remediation
+guidance *(requires Software Assurance / PAYG)*.
+
+![SQL best practices assessment](https://learn.microsoft.com/en-us/sql/sql-server/azure-arc/media/assess/run-assessment.png)
+*Best Practices Assessment for Arc-enabled SQL. Source: Microsoft Learn.*
+
+### 5 · Backup & point-in-time restore
+
+Automated backups let you restore to a point in time, managed from Azure *(requires
+Software Assurance / PAYG)*.
+
+![Point-in-time restore](https://learn.microsoft.com/en-us/azure/azure-arc/data/media/point-in-time-restore/point-in-time-restore.png)
+*Point-in-time restore for Azure Arc data. Source: Microsoft Learn.*
+
+### 6 · Monitoring & performance
+
+Built-in performance dashboards surface throughput, waits, and health for your Arc-enabled
+SQL *(requires Software Assurance / PAYG)*.
+
+![SQL performance dashboard](https://learn.microsoft.com/en-us/sql/sql-server/azure-arc/media/overview/performance-dashboard.png)
+*Performance/monitoring dashboard for Arc-enabled SQL. Source: Microsoft Learn.*
 
 ## The five pillars of value
 
