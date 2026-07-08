@@ -33,8 +33,8 @@ Each module is a curated learning path made of hands-on labs. Pick a module to b
 ## Featured labs
 
 <div class="lab-cards">
-{% assign labs = site.labs | sort: 'nav_order' %}
-{% for lab in labs %}
+{% assign featured = site.labs | where: "featured", true | sort: 'nav_order' %}
+{% for lab in featured %}
   <a class="lab-card" href="{{ lab.url | relative_url }}">
     <span class="lab-card__level">L{{ lab.level }}</span>
     <div class="lab-card__title">{{ lab.title }}</div>

@@ -1,0 +1,46 @@
+---
+title: "Self-Hosted Inference"
+slug: self-hosted-inference
+excerpt: "Serve an OpenAI-compatible LLM from your own Azure H100 with SGLang, then wire it into Microsoft Foundry using Bring Your Own Model."
+level_range: "L200–L400"
+duration_total: "~2 hours"
+order: 2
+icon: "fas fa-microchip"
+color: "#7B2FBF"
+---
+
+# Self-Hosted Inference on Azure GPU
+
+**Run Qwen3.6-35B on one H100 and wire it into Microsoft Foundry.**
+
+Serve an OpenAI-compatible endpoint from a single Azure H100 with **SGLang**, guard it
+with an **HTTPS + API-key gateway** (Caddy), then connect it to a **Microsoft Foundry**
+agent using **Bring Your Own Model (BYOM)** — no model weights ever leave your VM.
+
+![Foundry routes agent traffic through your gateway to the model behind it](https://ibranibeny.github.io/sglang-azure-workshop/images/foundry-byom-gateway.png)
+*Foundry Agent Service sends agent requests to your gateway, which forwards them to the model hosted behind it. Source: sglang-azure-workshop.*
+
+## What's running
+
+| Item | Detail |
+|------|--------|
+| **Model** | `Qwen/Qwen3.6-35B-A3B-FP8` — 35B total, ~A3B active, FP8, context 262,144 |
+| **GPU / VM** | Azure `Standard_NC40ads_H100_v5` — 1× NVIDIA H100 NVL, 94 GB, 40 vCPUs |
+| **Serving** | SGLang on loopback `127.0.0.1:30000`, fronted by Caddy (HTTPS + API-key gateway) |
+| **API surface** | OpenAI-compatible under `/v1` — chat completions, tool calling, SSE streaming |
+| **Throughput** | ~313 tokens/s decode (measured on the VM) |
+
+## What you will learn
+
+- **L200** — What *Bring Your Own Model* means and when to self-host inference.
+- **L300** — Provision SGLang serving Qwen3.6-35B on an Azure H100 VM.
+- **L300** — Secure the endpoint with an API key and a Caddy HTTPS gateway.
+- **L400** — Connect the endpoint to a Microsoft Foundry agent (BYOM), field by field.
+
+## Prerequisites
+
+- An **Azure subscription** with **H100 GPU quota** (`Standard_NC40ads_H100_v5`).
+- Access to **Microsoft Foundry** (ai.azure.com) with **Foundry User** role on a project
+  and **Contributor** on the resource group.
+- Azure CLI, a domain name for HTTPS, and the
+  [sglang-azure-workshop deploy repo](https://github.com/ibranibeny/sglang-azure-workshop).

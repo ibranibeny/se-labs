@@ -21,6 +21,7 @@ _layouts/     # module.html, lab.html
 | Module | Levels | Labs |
 |--------|--------|------|
 | [Azure Arc](_modules/azure-arc.md) | L100–L400 | 4 |
+| [Self-Hosted Inference](_modules/self-hosted-inference.md) | L200–L400 | 4 |
 
 ### Azure Arc labs
 

@@ -8,6 +8,7 @@ doc_type: "Build lab"
 persona: "Cloud engineer / architect"
 learning_path: "Azure Arc Hands-on"
 nav_order: 4
+featured: true
 report_issue: "https://github.com/ibranibeny/se-labs/issues/new"
 ---
 

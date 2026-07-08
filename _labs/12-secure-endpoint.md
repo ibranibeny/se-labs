@@ -1,0 +1,91 @@
+---
+title: "Secure the endpoint (API key + Caddy)"
+module: self-hosted-inference
+excerpt: "Protect the /v1 endpoint with a self-generated 256-bit API key behind a Caddy HTTPS gateway."
+level: 300
+duration: "20 min"
+doc_type: "How-to"
+persona: "AI engineer / cloud engineer"
+learning_path: "Self-Hosted Inference"
+nav_order: 7
+report_issue: "https://github.com/ibranibeny/se-labs/issues/new"
+---
+
+## Lab details
+
+| Level | Persona | Duration | Purpose |
+|-------|---------|----------|---------|
+| 300 | AI / cloud engineer | 20 min | Generate an API key and confirm the Caddy gateway enforces it, so only authorized callers reach the model. |
+
+## Why this matters
+
+Your endpoint is public HTTPS. Without a secret, anyone who finds the URL could use your
+GPU. The Caddy gateway checks an **API key** on every `/v1` request — you own the key.
+
+## Generate the API key
+
+The helper script writes a fresh **256-bit** key to `deploy/.secrets/api_key`
+(git-ignored) and never prints it:
+
+```bash
+# create the key once, or rotate an existing one
+./00-genkey.sh
+./00-genkey.sh --rotate
+```
+
+Under the hood that's `openssl rand -hex 32` (64 hex characters).
+
+Load it into your shell when you need the value:
+
+```bash
+export API_KEY=$(cat deploy/.secrets/api_key)
+```
+
+<div class="notice--danger" markdown="1">
+**Keep it secret.** Never commit or publish the key. If it ever leaks, rotate it
+immediately with `./00-genkey.sh --rotate`. After a rotation, re-run `./05-run-sglang.sh` —
+only Caddy restarts; the model stays loaded.
+</div>
+
+## How the gateway enforces it
+
+Caddy (configured from `Caddyfile.tmpl`) terminates TLS and requires the key on the
+`api-key` header before proxying to SGLang on `127.0.0.1:30000`. The `/health` path stays
+open (no auth) so you can probe liveness.
+
+## Verify
+
+An unauthenticated call to `/v1` should be rejected, and an authenticated one should
+succeed:
+
+```bash
+# No key -> 401 Unauthorized
+curl -s -o /dev/null -w "%{http_code}\n" https://<your-domain>/v1/models
+
+# With key -> 200 OK
+curl -s https://<your-domain>/v1/models \
+  -H "api-key: $API_KEY"
+```
+
+A quick chat completion (OpenAI-compatible):
+
+```bash
+curl -s https://<your-domain>/v1/chat/completions \
+  -H "api-key: $API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "model": "Qwen3.6-35B-A3B-FP8",
+        "messages": [{"role":"user","content":"Say hello in one sentence."}]
+      }'
+```
+
+<div class="notice--info" markdown="1">
+Note the `model` value is **`Qwen3.6-35B-A3B-FP8`** (no `Qwen/` prefix, no slash). You'll
+use exactly this id when you register the model in Foundry next.
+</div>
+
+## Summary of learnings
+
+- The endpoint is protected by a **self-generated 256-bit API key** you control.
+- Caddy enforces the key on `/v1`; `/health` stays open for probes.
+- **Rotating** the key restarts only Caddy — the loaded model is untouched.
