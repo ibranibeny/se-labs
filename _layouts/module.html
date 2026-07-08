@@ -1,0 +1,30 @@
+---
+layout: single
+---
+
+<div class="lab-hero">
+  <div class="lab-hero__badges">
+    {% if page.level_range %}<span class="lab-badge lab-badge--level">{{ page.level_range }}</span>{% endif %}
+    {% assign mlabs = site.labs | where: "module", page.slug %}
+    <span class="lab-badge">{{ mlabs | size }} labs</span>
+    {% if page.duration_total %}<span class="lab-badge lab-badge--path">{{ page.duration_total }}</span>{% endif %}
+  </div>
+</div>
+
+{{ content }}
+
+<h2 id="labs-in-this-module">Labs in this module</h2>
+{% assign labs = site.labs | where: "module", page.slug | sort: "nav_order" %}
+<div class="lab-cards">
+{% for lab in labs %}
+  <a class="lab-card" href="{{ lab.url | relative_url }}">
+    <span class="lab-card__level">L{{ lab.level }}</span>
+    <div class="lab-card__title">{{ lab.title }}</div>
+    <div class="lab-card__desc">{{ lab.excerpt }}</div>
+  </a>
+{% endfor %}
+</div>
+
+<p style="margin-top:2rem;">
+  <a class="btn btn--light-outline" href="{{ '/modules/' | relative_url }}">&larr; All modules</a>
+</p>

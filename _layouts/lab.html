@@ -1,0 +1,52 @@
+---
+layout: single
+---
+
+{% comment %} Link back to the parent module {% endcomment %}
+{% assign mod = site.modules | where: "slug", page.module | first %}
+{% if mod %}
+<p class="lab-module-crumb"><a href="{{ mod.url | relative_url }}">&larr; Part of: {{ mod.title }}</a></p>
+{% endif %}
+
+{% comment %} MCS-labs style header: level / duration / learning-path pills + report link {% endcomment %}
+<div class="lab-hero">
+  <div class="lab-hero__badges">
+    {% if page.level %}<span class="lab-badge lab-badge--level">Level {{ page.level }}</span>{% endif %}
+    {% if page.duration %}<span class="lab-badge">{{ page.duration }}</span>{% endif %}
+    {% if page.learning_path %}<span class="lab-badge lab-badge--path">{{ page.learning_path }}</span>{% endif %}
+    {% if page.doc_type %}<span class="lab-badge lab-badge--type">{{ page.doc_type }}</span>{% endif %}
+  </div>
+  {% if page.report_issue %}
+  <a class="lab-report" href="{{ page.report_issue }}">
+    <i class="fas fa-fw fa-flag"></i> Report an issue
+  </a>
+  {% endif %}
+</div>
+
+{{ content }}
+
+{% comment %} Smart Previous / Next navigation within the same module {% endcomment %}
+{% assign labs = site.labs | where: "module", page.module | sort: 'nav_order' %}
+{% assign total = labs | size %}
+{% assign idx = 0 %}
+{% for lab in labs %}
+  {% if lab.url == page.url %}{% assign idx = forloop.index0 %}{% endif %}
+{% endfor %}
+{% assign previdx = idx | minus: 1 %}
+{% assign nextidx = idx | plus: 1 %}
+
+<nav class="lab-nav" aria-label="Lab navigation">
+  {% if idx > 0 %}
+    {% assign prev = labs[previdx] %}
+    <a class="btn btn--light-outline" href="{{ prev.url | relative_url }}">&larr; {{ prev.title }}</a>
+  {% else %}
+    <a class="btn btn--light-outline" href="{{ mod.url | default: '/' | relative_url }}">&larr; Module home</a>
+  {% endif %}
+
+  {% if nextidx < total %}
+    {% assign nextlab = labs[nextidx] %}
+    <a class="btn btn--primary" href="{{ nextlab.url | relative_url }}">{{ nextlab.title }} &rarr;</a>
+  {% else %}
+    <a class="btn btn--primary" href="{{ mod.url | default: '/' | relative_url }}">Back to module &rarr;</a>
+  {% endif %}
+</nav>

@@ -1,0 +1,9 @@
+main:
+  - title: "Home"
+    url: /
+  - title: "Modules"
+    url: /modules/
+  - title: "All Labs"
+    url: /labs/
+  - title: "GitHub"
+    url: https://github.com/ibranibeny/se-labs

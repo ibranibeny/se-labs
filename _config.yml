@@ -1,0 +1,97 @@
+title: "SE Labs"
+subtitle: "Hands-on labs for cloud & solution engineering"
+description: >-
+  SE Labs — a portal of hands-on, self-paced labs for Azure and cloud solution
+  engineering. Learn by doing, one module at a time.
+url: "https://ibranibeny.github.io"
+baseurl: "/se-labs"
+
+# Theme (same engine as Microsoft Copilot Agents Labs)
+remote_theme: mmistakes/minimal-mistakes
+minimal_mistakes_skin: "air"
+
+locale: "en-US"
+
+# Portal features
+search: true
+search_full_content: true
+breadcrumbs: true
+enable_copy_code_button: true
+
+markdown: kramdown
+highlighter: rouge
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-include-cache
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: "highlight"
+
+after_footer_scripts:
+  - /assets/js/mermaid-init.js
+
+author:
+  name: "SE Labs"
+  bio: "Hands-on labs for cloud & solution engineering"
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/ibranibeny/se-labs"
+
+footer:
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/ibranibeny/se-labs"
+
+# Collections: modules contain labs (module-centric architecture)
+collections:
+  modules:
+    output: true
+    permalink: /modules/:name/
+  labs:
+    output: true
+    permalink: /labs/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "modules"
+    values:
+      layout: "module"
+      author_profile: false
+      toc: false
+      breadcrumbs: true
+      share: false
+  - scope:
+      path: ""
+      type: "labs"
+    values:
+      layout: "lab"
+      author_profile: false
+      toc: true
+      toc_sticky: true
+      toc_label: "On this page"
+      toc_icon: "bookmark"
+      read_time: false
+      share: false
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "single"
+      author_profile: false
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - scripts

@@ -1,0 +1,124 @@
+---
+# Custom styles layered on top of the Minimal Mistakes theme
+---
+
+@import "minimal-mistakes";
+
+/* ---- Lab header (level / duration / learning-path pills) ---- */
+.lab-hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.25rem 0 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $border-color;
+}
+
+.lab-hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.lab-badge {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: #eef3fb;
+  color: #0b3d91;
+}
+
+.lab-badge--level { background: #0078d4; color: #fff; }
+.lab-badge--path  { background: #e8f5e9; color: #1b5e20; }
+.lab-badge--type  { background: #f3e8fd; color: #5c2d91; }
+
+.lab-report {
+  margin-left: auto;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ---- Previous / Next navigation ---- */
+.lab-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid $border-color;
+}
+
+/* ---- Landing page lab cards ---- */
+.lab-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.lab-card {
+  display: block;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid $border-color;
+  border-radius: 12px;
+  background: #fff;
+  text-decoration: none !important;
+  color: inherit;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.lab-card:hover {
+  border-color: #0078d4;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+}
+
+.lab-card__level {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #fff;
+  background: #0078d4;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+}
+
+.lab-card__title {
+  font-weight: 700;
+  margin: 0.55rem 0 0.35rem;
+  font-size: 1.05rem;
+  line-height: 1.3;
+}
+
+.lab-card__desc {
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+.lab-card__meta {
+  margin-top: 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #0078d4;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.lab-module-crumb {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+/* ---- Mermaid ---- */
+.mermaid {
+  text-align: center;
+  margin: 1.5rem 0;
+}
