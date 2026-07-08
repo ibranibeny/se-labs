@@ -117,6 +117,20 @@
   margin: 0 0 0.5rem;
 }
 
+.module-group__title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid #0078d4;
+}
+
+.module-group__title .lab-badge {
+  margin-left: auto;
+  font-size: 0.7rem;
+}
+
 /* ---- Mermaid ---- */
 .mermaid {
   text-align: center;

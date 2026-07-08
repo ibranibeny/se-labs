@@ -43,6 +43,22 @@ Each module is a curated learning path made of hands-on labs. Pick a module to b
 {% endfor %}
 </div>
 
+## Browse all labs by module
+
+{% for mod in modules %}
+<h3 class="module-group__title"><i class="{{ mod.icon }}"></i>&nbsp; {{ mod.title }} <span class="lab-badge lab-badge--level">{{ mod.level_range }}</span></h3>
+<div class="lab-cards">
+{% assign mlabs = site.labs | where: "module", mod.slug | sort: 'nav_order' %}
+{% for lab in mlabs %}
+  <a class="lab-card" href="{{ lab.url | relative_url }}">
+    <span class="lab-card__level">L{{ lab.level }}</span>
+    <div class="lab-card__title">{{ lab.title }}</div>
+    <div class="lab-card__desc">{{ lab.excerpt }}</div>
+  </a>
+{% endfor %}
+</div>
+{% endfor %}
+
 ## Why SE Labs?
 
 - **Learn by doing** — every lab ends with something running in your own subscription.
