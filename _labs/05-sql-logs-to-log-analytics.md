@@ -94,6 +94,19 @@ az provider register --namespace Microsoft.OperationalInsights --wait
 **`southeastasia`**. Everything here (LAW, DCE, DCR) is created in that same region.
 </div>
 
+<div class="notice--warning" markdown="1">
+**Required first: the SQL VM must be onboarded to Azure Arc.** Azure Monitor Agent can only
+collect from a **non-Azure / on-premises** SQL Server VM once it is an **Arc-enabled server**.
+The **Connected Machine agent** creates the **managed identity** that AMA uses to authenticate
+to your workspace — the legacy Log Analytics agent used a workspace key, but AMA does not. So the
+order is always **onboard to Arc → install AMA → associate a DCR**. **No Arc = no AMA.**<br>
+Refs: [Use AMA on-premises & other clouds via Azure Arc](https://learn.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-supported-operating-systems#on-premises-and-in-other-clouds) ·
+[Prepare hybrid machines](https://learn.microsoft.com/azure/azure-monitor/vm/monitor-virtual-machine-agent#prepare-hybrid-machines). Labs 03–04 already onboarded `arc-eval-sql`.
+</div>
+
+![Onboard a machine to Azure Arc before collecting logs with Azure Monitor Agent](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/hybrid/arc-enabled-servers/media/arc-enabled-servers-onboarding.png)
+*A machine must be projected into Azure by the Connected Machine agent (Azure Arc) before AMA can stream its logs. Source: Microsoft Learn.*
+
 ---
 
 ## Step 1 — Set variables
