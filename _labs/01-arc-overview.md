@@ -135,23 +135,6 @@ Any Azure service you enable **on top of** Arc is billed at that service's own r
 Microsoft Defender for Cloud, Azure Monitor, Microsoft Sentinel, Azure Update Manager,
 Azure Policy **machine configuration**, Azure Automation, Key Vault, and Private Link.
 
-### Representative public prices
-
-Retrieved live from the **Azure Retail Prices API** (`prices.azure.com`) on **2026-07-08**,
-USD, list price — actual cost varies by region, currency, and agreement.
-{: .notice--info}
-
-| Meter (Azure Retail Prices API) | Public list price |
-|---------------------------------|-------------------|
-| Arc control plane for servers | **Free** ($0) |
-| Machine configuration – guest policy per server | ~$6.00 / server / month |
-| Arc for Kubernetes – policy | $3.00 / vCPU / month |
-| Arc on SCVMM – Basic | $2.50 / physical core / month |
-| SQL Server enabled by Arc – **Standard**, pay-as-you-go | $0.10 / vCore / hour |
-| SQL Server enabled by Arc – **Enterprise**, pay-as-you-go | $0.375 / vCore / hour |
-| SQL Server **ESU** (2014/2016), Standard | $0.19 / vCore / hour |
-| Windows Server 2012 **ESU** (Standard) via Arc | ~$0.0065 / core / hour |
-
 The licensing/cost model for physical-core coverage (e.g., ESU with unlimited
 virtualization) is illustrated here:
 
