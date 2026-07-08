@@ -39,6 +39,66 @@ you. This lab shows the **explicit** path so you understand each step and can co
 the **license type**.
 </div>
 
+---
+
+## Two ways to do this lab
+
+| Path | When to use | What runs |
+|------|-------------|-----------|
+| **A · Automated (workshop)** | You want a working Arc + SQL-Arc environment in minutes to explore the portal. | [`evaluate-arc-on-azure-vm.ps1`](https://github.com/ibranibeny/azure-arc-workshop/blob/main/scripts/evaluate-arc-on-azure-vm.ps1) does **both** use cases end-to-end. |
+| **B · Manual (real-world)** | You're onboarding an actual on-prem / other-cloud server. | You run the portal wizard or `azcmagent` yourself (Use case 1 & 2 below). |
+
+### Path A — what the workshop script automates
+
+The script performs, in order, exactly the same two use cases you'll do by hand below —
+plus the extra prep needed to *simulate* an on-premises server on an Azure VM (evaluation
+only, per [Microsoft Learn](https://learn.microsoft.com/azure/azure-arc/servers/plan-evaluate-on-azure-virtual-machine)):
+
+```mermaid
+flowchart LR
+    A["1 Create Windows VM<br/>indonesiacentral"] --> B["2 Prepare<br/>MSFT_ARC_TEST + block IMDS"]
+    B --> C["3 Install SQL 2022 Eval"]
+    C --> D["4 azcmagent connect<br/>&rarr; vm-arc @ southeastasia"]
+    D --> E["5 SQL extension<br/>&rarr; sql-arc @ southeastasia"]
+    E --> F["6 Reboot<br/>Guest Agent off"]
+    classDef vm fill:#e3f2fd,stroke:#1565c0,color:#0d47a1;
+    classDef arc fill:#e8f5e9,stroke:#2e7d32,color:#1b5e20;
+    classDef sql fill:#fff3e0,stroke:#ef6c00,color:#e65100;
+    class A,B,C,F vm; class D arc; class E sql;
+```
+
+Mapping to this lab's use cases:
+
+| Script step | Use case | Key command inside the script |
+|-------------|----------|-------------------------------|
+| Step 4 — onboard | **Use case 1** (create **vm-arc**) | `azcmagent connect ... --location $ArcLocation` |
+| Step 5 — SQL extension | **Use case 2** (create **sql-arc**) | `az connectedmachine extension create ... WindowsAgent.SqlServer` |
+
+Two details worth calling out in the code:
+
+- **`-ArcLocation` is separate from `-Location`.** The physical VM stays in
+  `indonesiacentral`, but the **Arc server resource and the SQL-Arc extension are created
+  in `southeastasia`** — because *SQL Server enabled by Azure Arc* isn't offered in
+  Indonesia Central. The Arc resource region is metadata and [may differ from the machine's
+  physical location](https://learn.microsoft.com/azure/azure-arc/servers/onboard-service-principal#install-the-agent-and-connect-to-azure).
+- **The Guest Agent is only set to `Disabled`, not stopped, until the final reboot** —
+  because `az vm run-command` relies on the running Guest Agent to report back, and
+  `MSFT_ARC_TEST=true` already lets the Arc agent onboard while it's still running.
+
+Run it (auto-generates a random admin password and prints it at the end):
+
+```powershell
+git clone https://github.com/ibranibeny/azure-arc-workshop.git
+cd azure-arc-workshop/scripts
+./evaluate-arc-on-azure-vm.ps1 -ResourceGroup rg-arc-eval -OpenAllInboundPorts
+# tear everything down when finished
+./evaluate-arc-on-azure-vm.ps1 -ResourceGroup rg-arc-eval -Cleanup
+```
+
+The rest of this lab is **Path B** — the manual, real-world procedure.
+
+---
+
 ## Prerequisites
 
 - A **Windows Server 2016+** machine (physical, on-prem VM, or another cloud) that is
@@ -128,6 +188,8 @@ az connectedmachine list --resource-group "rg-arc-workshop" -o table
 
 In the portal, open **Azure Arc → Servers** and confirm the machine shows **Connected**.
 
+![Machine connected in the Azure portal (Machines - Azure Arc)](https://learn.microsoft.com/azure/azure-arc/servers/media/quick-enable-hybrid-vm/enabled-machine.png)
+
 <div class="notice--success" markdown="1">
 **Tip:** `azcmagent show` reports `Agent Status: Connected` and the assigned Azure Resource ID
 when everything is healthy.
@@ -187,6 +249,8 @@ az resource list \
 
 In the portal, go to **Azure Arc → SQL Server instances** and confirm your instance
 appears with the expected **edition** and **license type**.
+
+![Arc-enabled SQL Server dashboard in the Azure portal](https://learn.microsoft.com/en-us/sql/sql-server/azure-arc/media/overview/arc-sql-server-dashboard.png)
 
 <div class="notice--warning" markdown="1">
 **Warning:** If the license type shows **"Configuration needed"**, the onboarding didn't have
