@@ -38,6 +38,25 @@ remoting) with **one unified Azure platform**.
 ![Azure Arc-enabled servers onboarding and automation](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/hybrid/arc-enabled-servers/media/arc-enabled-servers-onboarding.png)
 *Once onboarded, Arc-enabled servers can be targeted by Azure automation, policy, and security services. Source: Microsoft Learn (Cloud Adoption Framework).*
 
+## The Azure Arc dashboard
+
+In the Azure portal, the **Azure Arc center** is your single pane of glass. It lists every
+Arc-enabled resource — servers, SQL Server instances, Kubernetes clusters — with status,
+tags, and drill-down into each resource, exactly like a native Azure VM.
+
+![Azure Arc inventory dashboard](https://learn.microsoft.com/en-us/sql/sql-server/azure-arc/media/migration-assessment/dashboard-inventory.png)
+*The Azure Arc inventory dashboard shows all projected resources in one view. Source: Microsoft Learn.*
+
+From the dashboard you can:
+
+- **Inventory & search** — see every machine/instance across clouds; query with Azure Resource Graph.
+- **Organize** — group by subscription, resource group, and tags.
+- **Act** — open a resource to apply policy, run commands, enable extensions, or view insights.
+- **Manage with Windows Admin Center** — administer a machine (RDP, Hyper-V, Event Viewer) from the portal, with no VPN or public IP.
+
+![Windows Admin Center in Azure Arc](https://learn.microsoft.com/en-us/windows-server/manage/media/manage-vm/windows-admin-center-in-azure-arc-overview.png)
+*Windows Admin Center in Azure Arc manages a hybrid machine directly from the portal. Source: Microsoft Learn.*
+
 ## The five pillars of value
 
 ### 1. Unified inventory and organization
