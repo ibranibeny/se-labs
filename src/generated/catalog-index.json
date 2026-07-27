@@ -363,6 +363,208 @@
       "externalUrl": "https://jon-soong-msft.github.io/35-ai-foundry-handson/index.html",
       "labSlugs": [],
       "levels": []
+    },
+    {
+      "slug": "ai-in-a-day-knowledge-base-agent",
+      "title": "AI in a Day — Knowledge Base Agent",
+      "excerpt": "A one-day, hands-on hackathon that builds a SharePoint-grounded knowledge-base ingestion pipeline powering a Copilot Studio / Foundry agent with cited answers.",
+      "levelRange": "L200–L300",
+      "durationTotal": "1 day",
+      "order": 11,
+      "icon": "fas fa-book",
+      "color": "#0EA5E9",
+      "conversations": [
+        "ubiquitous-innovation",
+        "amplify-intelligence"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Workshop",
+      "products": [
+        "Azure AI Foundry",
+        "Azure AI Search",
+        "Azure OpenAI",
+        "Copilot Studio",
+        "Content Understanding",
+        "Azure Functions"
+      ],
+      "draft": true,
+      "labSlugs": [],
+      "levels": []
+    },
+    {
+      "slug": "ai-citadel-governance-platform",
+      "title": "AI in a Day — AI Citadel Governance Platform",
+      "excerpt": "A one-day hackathon to deploy and configure the Foundry Citadel governance & security landing zone — a universal AI gateway with policy-as-code, observability, and zero-trust by default.",
+      "levelRange": "L300–L400",
+      "durationTotal": "1 day",
+      "order": 12,
+      "icon": "fas fa-shield-halved",
+      "color": "#B4009E",
+      "conversations": [
+        "trusted-secure-platform",
+        "ubiquitous-innovation"
+      ],
+      "solutionAreas": [
+        "Security",
+        "CAIP"
+      ],
+      "assetType": "Workshop",
+      "products": [
+        "Azure API Management",
+        "Microsoft Purview",
+        "Microsoft Defender",
+        "Microsoft Entra",
+        "Azure AI Foundry",
+        "AI Content Safety"
+      ],
+      "draft": true,
+      "labSlugs": [],
+      "levels": []
+    },
+    {
+      "slug": "talk-to-your-logs-elasticsearch",
+      "title": "Talk to Your Logs — Elasticsearch",
+      "excerpt": "A hybrid demo that lets ops and business teams ask natural-language questions against Elasticsearch operational and transaction logs, answered by Foundry GPT-4o + AI Search.",
+      "levelRange": "L300",
+      "durationTotal": "0.5 day",
+      "order": 13,
+      "icon": "fas fa-magnifying-glass-chart",
+      "color": "#0E7490",
+      "conversations": [
+        "amplify-intelligence",
+        "modernize-confidence"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Demo",
+      "products": [
+        "Azure AI Foundry",
+        "GPT-4o",
+        "Azure AI Search",
+        "Elasticsearch",
+        "Kibana",
+        "Streamlit",
+        "MCP"
+      ],
+      "draft": true,
+      "labSlugs": [],
+      "levels": []
+    },
+    {
+      "slug": "fabric-data-agent-data-to-insight",
+      "title": "Fabric Data Agent — Data to Insight",
+      "excerpt": "A half-day, hands-on workshop that turns enterprise data in OneLake into a Fabric Data Agent — a virtual analyst business users can query in natural language across M365, Copilot Studio, and Foundry.",
+      "levelRange": "L200–L300",
+      "durationTotal": "0.5 day",
+      "order": 14,
+      "icon": "fas fa-database",
+      "color": "#117865",
+      "conversations": [
+        "unified-data-ai-estate",
+        "amplify-intelligence"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Workshop",
+      "products": [
+        "Microsoft Fabric",
+        "OneLake",
+        "Data Factory",
+        "Lakehouse",
+        "Data Warehouse",
+        "Fabric Data Agent",
+        "Power BI",
+        "Purview"
+      ],
+      "draft": true,
+      "labSlugs": [],
+      "levels": []
+    },
+    {
+      "slug": "fabric-networking-landing-zone",
+      "title": "Fabric Networking & Landing Zone Integration",
+      "excerpt": "A half-day workshop that prepares a Microsoft Fabric tenant for secure access and data-source ingestion — inbound/outbound networking and landing-zone integration.",
+      "levelRange": "L300",
+      "durationTotal": "0.5 day",
+      "order": 15,
+      "icon": "fas fa-network-wired",
+      "color": "#1F6FEB",
+      "conversations": [
+        "unified-data-ai-estate",
+        "modernize-confidence"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Workshop",
+      "products": [
+        "Microsoft Fabric",
+        "Azure Private Link",
+        "Managed Private Endpoints",
+        "Virtual Network",
+        "Data Gateway"
+      ],
+      "draft": true,
+      "labSlugs": [],
+      "levels": []
+    },
+    {
+      "slug": "purview-data-governance-uam",
+      "title": "Purview Data Governance — User Access Matrix",
+      "excerpt": "A half-day workshop covering the Entra ID and Purview roles needed to bootstrap Microsoft Purview for Data Governance — Information Protection, DLP, and the Unified Catalog.",
+      "levelRange": "L200–L300",
+      "durationTotal": "0.5 day",
+      "order": 16,
+      "icon": "fas fa-user-shield",
+      "color": "#8661C5",
+      "conversations": [
+        "trusted-secure-platform",
+        "unified-data-ai-estate"
+      ],
+      "solutionAreas": [
+        "Security"
+      ],
+      "assetType": "Workshop",
+      "products": [
+        "Microsoft Purview",
+        "Microsoft Entra",
+        "Unified Catalog",
+        "Data Loss Prevention",
+        "Information Protection"
+      ],
+      "draft": true,
+      "labSlugs": [],
+      "levels": []
+    },
+    {
+      "slug": "cloud-pc-in-a-day",
+      "title": "Cloud PC in a Day",
+      "excerpt": "A half-day, hands-on workshop to deploy Azure Virtual Desktop and Windows 365 for secured, scalable virtual desktops.",
+      "levelRange": "L100–L200",
+      "durationTotal": "0.5 day",
+      "order": 17,
+      "icon": "fas fa-desktop",
+      "color": "#0078D4",
+      "conversations": [
+        "ai-ready-productivity"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Workshop",
+      "products": [
+        "Azure Virtual Desktop",
+        "Windows 365",
+        "Microsoft Entra",
+        "FSLogix"
+      ],
+      "draft": true,
+      "labSlugs": [],
+      "levels": []
     }
   ],
   "labs": [
