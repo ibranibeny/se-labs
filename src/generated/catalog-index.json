@@ -1,0 +1,777 @@
+{
+  "modules": [
+    {
+      "slug": "azure-arc",
+      "title": "Azure Arc",
+      "excerpt": "Extend Azure management, governance, and security to servers and SQL Server running anywhere.",
+      "levelRange": "L100–L400",
+      "durationTotal": "~2.5 hours",
+      "order": 1,
+      "icon": "fas fa-cloud",
+      "color": "#0078D4",
+      "sourceSite": "https://ibranibeny.github.io/azure-arc-workshop/",
+      "sourceRepo": "https://github.com/ibranibeny/azure-arc-workshop",
+      "conversations": [
+        "modernize-confidence"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Workshop",
+      "products": [
+        "Azure Arc",
+        "SQL Server",
+        "Windows Server",
+        "Azure Monitor",
+        "Governance"
+      ],
+      "labSlugs": [
+        "01-arc-overview",
+        "02-arc-value",
+        "03-onboard-windows-sql",
+        "04-simulate-vm-sql-arc"
+      ],
+      "levels": [
+        100,
+        200,
+        300,
+        400
+      ]
+    },
+    {
+      "slug": "sglang-endpoint",
+      "title": "SGLang Endpoint on Azure H100",
+      "excerpt": "Deploy an OpenAI-compatible LLM endpoint on a single Azure H100 with SGLang behind a Caddy HTTPS + API-key gateway.",
+      "levelRange": "L200–L300",
+      "durationTotal": "~1.5 hours",
+      "order": 2,
+      "icon": "fas fa-server",
+      "color": "#3B82F6",
+      "sourceSite": "https://ibranibeny.github.io/sglang-azure-workshop/",
+      "sourceRepo": "https://github.com/ibranibeny/sglang-azure-workshop",
+      "conversations": [
+        "ubiquitous-innovation"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Workshop",
+      "products": [
+        "Azure GPU",
+        "H100",
+        "SGLang",
+        "Caddy",
+        "Qwen"
+      ],
+      "labSlugs": [
+        "14-sglang-architecture",
+        "11-provision-sglang-h100",
+        "12-secure-endpoint"
+      ],
+      "levels": [
+        200,
+        300
+      ]
+    },
+    {
+      "slug": "self-hosted-inference",
+      "title": "Foundry: Bring Your Own Model",
+      "excerpt": "Connect a self-hosted, OpenAI-compatible model endpoint to a Microsoft Foundry agent using Bring Your Own Model (BYOM).",
+      "levelRange": "L200–L400",
+      "durationTotal": "~50 min",
+      "order": 3,
+      "icon": "fas fa-robot",
+      "color": "#7B2FBF",
+      "sourceSite": "https://ibranibeny.github.io/sglang-azure-workshop/",
+      "sourceRepo": "https://github.com/ibranibeny/sglang-azure-workshop",
+      "conversations": [
+        "ubiquitous-innovation",
+        "amplify-intelligence"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Reference Architecture",
+      "products": [
+        "Azure AI Foundry",
+        "Agent Service",
+        "BYOM"
+      ],
+      "labSlugs": [
+        "10-byom-overview",
+        "13-wire-into-foundry"
+      ],
+      "levels": [
+        200,
+        400
+      ]
+    },
+    {
+      "slug": "azure-resiliency",
+      "title": "Azure Resiliency & DR",
+      "excerpt": "Simulate disaster recovery and automatic multi-region failover with Azure Front Door, SQL Failover Groups, and hub-spoke networking.",
+      "levelRange": "L200–L400",
+      "durationTotal": "~3 hours",
+      "order": 4,
+      "icon": "fas fa-shield-alt",
+      "color": "#107C10",
+      "sourceSite": "https://ibranibeny.github.io/azure-resiliency-workshop/",
+      "sourceRepo": "https://github.com/ibranibeny/azure-resiliency-workshop",
+      "conversations": [
+        "modernize-confidence"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Workshop",
+      "products": [
+        "Azure Front Door",
+        "SQL Failover Groups",
+        "Virtual Network",
+        "Disaster Recovery"
+      ],
+      "labSlugs": [
+        "20-resiliency-overview",
+        "21-deploy-resilient-architecture",
+        "22-sql-failover-groups",
+        "23-failover-demo"
+      ],
+      "levels": [
+        200,
+        300,
+        400
+      ]
+    },
+    {
+      "slug": "app-insights",
+      "title": "Observability with App Insights",
+      "excerpt": "Instrument a .NET 8 API, deploy it to Azure, and watch every Application Insights experience light up with real telemetry.",
+      "levelRange": "L100–L400",
+      "durationTotal": "~1.5 hours",
+      "order": 5,
+      "icon": "fas fa-chart-line",
+      "color": "#8661C5",
+      "sourceSite": "https://ibranibeny.github.io/ApplicationInsights-AzureDemo/",
+      "sourceRepo": "https://github.com/ibranibeny/ApplicationInsights-AzureDemo",
+      "conversations": [
+        "modernize-confidence"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Demo",
+      "products": [
+        "Application Insights",
+        "Azure Monitor",
+        ".NET",
+        "Container Instances"
+      ],
+      "labSlugs": [
+        "30-appinsights-overview",
+        "31-enable-app-insights",
+        "32-deploy-instrumented-demo",
+        "33-explore-telemetry-mesh"
+      ],
+      "levels": [
+        100,
+        200,
+        300,
+        400
+      ]
+    },
+    {
+      "slug": "network-security",
+      "title": "Network Security (Defense-in-Depth)",
+      "excerpt": "Build a layered defense-in-depth network — WAF, Azure Firewall Premium + IDPS, segmentation, forced tunneling, and Bastion-only access — then attack it and read the evidence.",
+      "levelRange": "L100–L400",
+      "durationTotal": "~3.5 hours",
+      "order": 6,
+      "icon": "fas fa-shield-halved",
+      "color": "#B4009E",
+      "sourceSite": "https://ibranibeny.github.io/network-security-workshop/",
+      "sourceRepo": "https://github.com/ibranibeny/network-security-workshop",
+      "conversations": [
+        "trusted-secure-platform"
+      ],
+      "solutionAreas": [
+        "Security"
+      ],
+      "assetType": "Workshop",
+      "products": [
+        "Azure Firewall",
+        "WAF",
+        "Front Door",
+        "Application Gateway",
+        "Bastion"
+      ],
+      "labSlugs": [
+        "40-network-security-overview",
+        "41-build-network-security-lab",
+        "42-attack-defense-scenarios",
+        "43-network-security-telemetry"
+      ],
+      "levels": [
+        100,
+        300,
+        400
+      ]
+    },
+    {
+      "slug": "spec-kit",
+      "title": "Spec-Driven Development (Spec Kit)",
+      "excerpt": "Turn natural-language feature ideas into production-ready code with GitHub Copilot Spec Kit — a structured specify → plan → tasks → implement pipeline.",
+      "levelRange": "L100–L300",
+      "durationTotal": "~2.5 hours",
+      "order": 7,
+      "icon": "fas fa-wand-magic-sparkles",
+      "color": "#24292F",
+      "sourceSite": "https://ibranibeny.github.io/Overview-Github-Spec-kit/",
+      "sourceRepo": "https://github.com/ibranibeny/Overview-Github-Spec-kit",
+      "conversations": [
+        "ubiquitous-innovation"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Workshop",
+      "products": [
+        "GitHub Copilot",
+        "Spec Kit",
+        "React",
+        "FastAPI"
+      ],
+      "labSlugs": [
+        "50-spec-kit-overview",
+        "51-constitution-specification",
+        "52-plan-tasks-implement"
+      ],
+      "levels": [
+        100,
+        200,
+        300
+      ]
+    },
+    {
+      "slug": "kaito-aks",
+      "title": "KAITO on AKS",
+      "excerpt": "Deploy AI models on Azure Kubernetes Service with one YAML manifest — KAITO automates GPU provisioning, model download, and inference serving.",
+      "levelRange": "L100–L300",
+      "durationTotal": "~1.5 hours",
+      "order": 8,
+      "icon": "fas fa-cubes",
+      "color": "#0EA5E9",
+      "sourceSite": "https://ibranibeny.github.io/Kaito-Deployment/",
+      "sourceRepo": "https://github.com/ibranibeny/Kaito-Deployment",
+      "conversations": [
+        "unified-data-ai-estate",
+        "ubiquitous-innovation"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Reference Architecture",
+      "products": [
+        "AKS",
+        "KAITO",
+        "vLLM",
+        "GPU"
+      ],
+      "labSlugs": [
+        "60-kaito-overview",
+        "61-deploy-aks-kaito-model",
+        "62-kaito-operate-monitor"
+      ],
+      "levels": [
+        100,
+        300
+      ]
+    },
+    {
+      "slug": "analyze-sql-logs",
+      "title": "Analyze SQL Logs with Arc & AI",
+      "excerpt": "Continue from Azure Arc: stream SQL Server logs to Log Analytics with AMA + DCE + DCR, then ask questions in natural language using Azure AI Foundry + GPT-4o.",
+      "levelRange": "L500",
+      "durationTotal": "~2 hours",
+      "order": 9,
+      "icon": "fas fa-comments",
+      "color": "#8B5CF6",
+      "sourceSite": "https://ibranibeny.github.io/AnalyzeYourSQLLogwithArc",
+      "sourceRepo": "https://github.com/ibranibeny/AnalyzeYourSQLLogwithArc",
+      "conversations": [
+        "unified-data-ai-estate",
+        "amplify-intelligence"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Demo",
+      "products": [
+        "Azure Arc",
+        "Log Analytics",
+        "Azure AI Foundry",
+        "GPT-4o",
+        "Streamlit"
+      ],
+      "labSlugs": [
+        "70-analyze-sql-overview",
+        "71-deploy-infrastructure",
+        "72-configure-sql-simulate",
+        "73-deploy-ai-app",
+        "74-production-cleanup"
+      ],
+      "levels": [
+        500
+      ]
+    }
+  ],
+  "labs": [
+    {
+      "slug": "01-arc-overview",
+      "title": "Azure Arc Overview",
+      "module": "azure-arc",
+      "excerpt": "Understand what Azure Arc is and the control-plane model.",
+      "level": 100,
+      "duration": "20 min",
+      "docType": "Concept",
+      "persona": "IT pro / architect",
+      "learningPath": "Azure Arc Fundamentals",
+      "navOrder": 1,
+      "featured": false,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "02-arc-value",
+      "title": "The Value of Azure Arc",
+      "module": "azure-arc",
+      "excerpt": "Explore the governance, security, and management value of Azure Arc.",
+      "level": 200,
+      "duration": "25 min",
+      "docType": "Concept",
+      "persona": "IT pro / architect / decision maker",
+      "learningPath": "Azure Arc Fundamentals",
+      "navOrder": 2,
+      "featured": false,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "03-onboard-windows-sql",
+      "title": "Onboard Windows Server & SQL Server",
+      "module": "azure-arc",
+      "excerpt": "Connect a machine and its SQL Server instance to Azure Arc.",
+      "level": 300,
+      "duration": "40 min",
+      "docType": "How-to",
+      "persona": "IT pro / cloud engineer",
+      "learningPath": "Azure Arc Hands-on",
+      "navOrder": 3,
+      "featured": false,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "04-simulate-vm-sql-arc",
+      "title": "Simulate a Windows + SQL Server VM into Azure Arc",
+      "module": "azure-arc",
+      "excerpt": "A block-by-block walkthrough of the evaluate-arc-on-azure-vm.ps1 workshop script.",
+      "level": 400,
+      "duration": "60 min",
+      "docType": "Build lab",
+      "persona": "Cloud engineer / architect",
+      "learningPath": "Azure Arc Hands-on",
+      "navOrder": 4,
+      "featured": true,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "10-byom-overview",
+      "title": "Bring Your Own Model & Self-Hosted Inference",
+      "module": "self-hosted-inference",
+      "excerpt": "What BYOM means and why you might self-host an LLM behind your own gateway.",
+      "level": 200,
+      "duration": "20 min",
+      "docType": "Concept",
+      "persona": "AI engineer / architect",
+      "learningPath": "Foundry BYOM",
+      "navOrder": 5,
+      "featured": false,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "13-wire-into-foundry",
+      "title": "Wire it into Microsoft Foundry (BYOM)",
+      "module": "self-hosted-inference",
+      "excerpt": "Connect your self-hosted Qwen3.6-35B endpoint to a Microsoft Foundry agent, field by field.",
+      "level": 400,
+      "duration": "30 min",
+      "docType": "Build lab",
+      "persona": "AI engineer / architect",
+      "learningPath": "Foundry BYOM",
+      "navOrder": 6,
+      "featured": true,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "20-resiliency-overview",
+      "title": "Resiliency Architecture Overview",
+      "module": "azure-resiliency",
+      "excerpt": "Understand the hub-spoke, Front Door, and failover-group design behind multi-region DR.",
+      "level": 200,
+      "duration": "20 min",
+      "docType": "Concept",
+      "persona": "Cloud architect / engineer",
+      "learningPath": "Azure Resiliency",
+      "navOrder": 9,
+      "featured": false,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "21-deploy-resilient-architecture",
+      "title": "Deploy the Resilient Architecture",
+      "module": "azure-resiliency",
+      "excerpt": "Provision the full two-region hub-spoke topology with Azure CLI in eight phases.",
+      "level": 300,
+      "duration": "45 min",
+      "docType": "How-to",
+      "persona": "Cloud engineer",
+      "learningPath": "Azure Resiliency",
+      "navOrder": 10,
+      "featured": false,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "22-sql-failover-groups",
+      "title": "SQL Failover Groups & Private Endpoints",
+      "module": "azure-resiliency",
+      "excerpt": "How geo-replication, the listener endpoint, and private endpoints keep SQL available across regions.",
+      "level": 300,
+      "duration": "25 min",
+      "docType": "How-to",
+      "persona": "Cloud engineer / DBA",
+      "learningPath": "Azure Resiliency",
+      "navOrder": 11,
+      "featured": false,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "23-failover-demo",
+      "title": "Run the Failover Demo",
+      "module": "azure-resiliency",
+      "excerpt": "Stop the primary region and watch traffic and data fail over to the secondary — then recover.",
+      "level": 400,
+      "duration": "30 min",
+      "docType": "Build lab",
+      "persona": "Cloud engineer / architect",
+      "learningPath": "Azure Resiliency",
+      "navOrder": 12,
+      "featured": true,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "30-appinsights-overview",
+      "title": "Azure Monitor & Application Insights Overview",
+      "module": "app-insights",
+      "excerpt": "What Azure Monitor and Application Insights are, and the telemetry types they collect.",
+      "level": 100,
+      "duration": "15 min",
+      "docType": "Concept",
+      "persona": "Developer / SRE",
+      "learningPath": "Observability",
+      "navOrder": 13,
+      "featured": false,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "31-enable-app-insights",
+      "title": "Enable Application Insights",
+      "module": "app-insights",
+      "excerpt": "Two ways to get telemetry flowing: codeless autoinstrumentation vs. the code-based SDK.",
+      "level": 200,
+      "duration": "15 min",
+      "docType": "How-to",
+      "persona": "Developer",
+      "learningPath": "Observability",
+      "navOrder": 14,
+      "featured": false,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "32-deploy-instrumented-demo",
+      "title": "Deploy the Instrumented Demo",
+      "module": "app-insights",
+      "excerpt": "Deploy a .NET 8 API to Azure Container Instances with Log Analytics + App Insights, then verify telemetry.",
+      "level": 300,
+      "duration": "30 min",
+      "docType": "Build lab",
+      "persona": "Developer / cloud engineer",
+      "learningPath": "Observability",
+      "navOrder": 15,
+      "featured": false,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "33-explore-telemetry-mesh",
+      "title": "Explore Telemetry & the 5-Service Mesh",
+      "module": "app-insights",
+      "excerpt": "Deploy five wired-up services and render a real distributed Application Map — then read every number on it.",
+      "level": 400,
+      "duration": "25 min",
+      "docType": "Build lab",
+      "persona": "Developer / SRE",
+      "learningPath": "Observability",
+      "navOrder": 16,
+      "featured": true,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "40-network-security-overview",
+      "title": "Defense-in-Depth Overview",
+      "module": "network-security",
+      "excerpt": "The services and layers behind a defense-in-depth network — explained in plain language.",
+      "level": 100,
+      "duration": "20 min",
+      "docType": "Concept",
+      "persona": "Anyone new to Azure networking/security",
+      "learningPath": "Network Security",
+      "navOrder": 17,
+      "featured": false,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "41-build-network-security-lab",
+      "title": "Build the Defense-in-Depth Lab",
+      "module": "network-security",
+      "excerpt": "Deploy the hub-spoke network, firewall, VMs, WAF layers, and monitoring — stage by stage.",
+      "level": 300,
+      "duration": "50 min",
+      "docType": "Build lab",
+      "persona": "Cloud / security engineer",
+      "learningPath": "Network Security",
+      "navOrder": 18,
+      "featured": false,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "42-attack-defense-scenarios",
+      "title": "Attack & Defense Scenarios",
+      "module": "network-security",
+      "excerpt": "Run eight scenarios — WAF blocks, FQDN filtering, default-deny, forced tunnel, IDPS, custom + geo WAF rules.",
+      "level": 400,
+      "duration": "45 min",
+      "docType": "Build lab",
+      "persona": "Security engineer",
+      "learningPath": "Network Security",
+      "navOrder": 19,
+      "featured": true,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "43-network-security-telemetry",
+      "title": "Read the Telemetry in Log Analytics",
+      "module": "network-security",
+      "excerpt": "Prove every control produced evidence — query the firewall, IDPS, and WAF logs with KQL.",
+      "level": 300,
+      "duration": "20 min",
+      "docType": "How-to",
+      "persona": "Security engineer / analyst",
+      "learningPath": "Network Security",
+      "navOrder": 20,
+      "featured": false,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "14-sglang-architecture",
+      "title": "SGLang Endpoint Architecture",
+      "module": "sglang-endpoint",
+      "excerpt": "How an OpenAI-compatible endpoint is served from a single H100 — SGLang, Caddy, DNS, and the request flow.",
+      "level": 200,
+      "duration": "20 min",
+      "docType": "Concept",
+      "persona": "AI engineer / architect",
+      "learningPath": "SGLang Endpoint",
+      "navOrder": 21,
+      "featured": false,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "11-provision-sglang-h100",
+      "title": "Provision SGLang on an H100",
+      "module": "sglang-endpoint",
+      "excerpt": "Stand up an Azure H100 VM and serve Qwen3.6-35B with SGLang — driven entirely by az vm run-command.",
+      "level": 300,
+      "duration": "35 min",
+      "docType": "How-to",
+      "persona": "AI engineer / cloud engineer",
+      "learningPath": "SGLang Endpoint",
+      "navOrder": 22,
+      "featured": false,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "12-secure-endpoint",
+      "title": "Secure the endpoint (API key + Caddy)",
+      "module": "sglang-endpoint",
+      "excerpt": "Protect the /v1 endpoint with a self-generated 256-bit API key behind a Caddy HTTPS gateway.",
+      "level": 300,
+      "duration": "20 min",
+      "docType": "How-to",
+      "persona": "AI engineer / cloud engineer",
+      "learningPath": "SGLang Endpoint",
+      "navOrder": 23,
+      "featured": false,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "50-spec-kit-overview",
+      "title": "Spec Kit Overview",
+      "module": "spec-kit",
+      "excerpt": "The Spec Kit pipeline, its artifacts, and why spec-driven development changes how you build.",
+      "level": 100,
+      "duration": "20 min",
+      "docType": "Concept",
+      "persona": "Developer / architect",
+      "learningPath": "Spec-Driven Development",
+      "navOrder": 24,
+      "featured": false,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "51-constitution-specification",
+      "title": "Constitution & Specification",
+      "module": "spec-kit",
+      "excerpt": "Define project governance, then turn a natural-language idea into a clarified feature spec.",
+      "level": 200,
+      "duration": "30 min",
+      "docType": "How-to",
+      "persona": "Developer / architect",
+      "learningPath": "Spec-Driven Development",
+      "navOrder": 25,
+      "featured": false,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "52-plan-tasks-implement",
+      "title": "Plan, Tasks & Implement",
+      "module": "spec-kit",
+      "excerpt": "Generate the implementation plan and task list, then let Copilot build and validate the solution.",
+      "level": 300,
+      "duration": "40 min",
+      "docType": "Build lab",
+      "persona": "Developer / architect",
+      "learningPath": "Spec-Driven Development",
+      "navOrder": 26,
+      "featured": true,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "60-kaito-overview",
+      "title": "KAITO Overview & Architecture",
+      "module": "kaito-aks",
+      "excerpt": "What KAITO is, how it works, and why one manifest replaces hundreds of lines of YAML.",
+      "level": 100,
+      "duration": "20 min",
+      "docType": "Concept",
+      "persona": "Platform / AI engineer",
+      "learningPath": "KAITO on AKS",
+      "navOrder": 27,
+      "featured": false,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "61-deploy-aks-kaito-model",
+      "title": "Deploy AKS with KAITO & a Model",
+      "module": "kaito-aks",
+      "excerpt": "Create an AKS cluster with the AI toolchain operator, then serve a model with a workspace manifest.",
+      "level": 300,
+      "duration": "35 min",
+      "docType": "Build lab",
+      "persona": "Platform / AI engineer",
+      "learningPath": "KAITO on AKS",
+      "navOrder": 28,
+      "featured": false,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "62-kaito-operate-monitor",
+      "title": "Operate, Test & Monitor",
+      "module": "kaito-aks",
+      "excerpt": "Manage the workspace in Headlamp, query the model, and watch vLLM/GPU metrics in Grafana.",
+      "level": 300,
+      "duration": "30 min",
+      "docType": "How-to",
+      "persona": "Platform / AI engineer / SRE",
+      "learningPath": "KAITO on AKS",
+      "navOrder": 29,
+      "featured": true,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "70-analyze-sql-overview",
+      "title": "Overview & Architecture",
+      "module": "analyze-sql-logs",
+      "excerpt": "What you'll build, the end-to-end flow, and an overview of DCE, DCR, and Azure AI Foundry.",
+      "level": 500,
+      "duration": "20 min",
+      "docType": "Concept",
+      "persona": "Cloud / AI engineer",
+      "learningPath": "Analyze SQL Logs with Arc & AI",
+      "navOrder": 30,
+      "featured": true,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "71-deploy-infrastructure",
+      "title": "Deploy the Infrastructure",
+      "module": "analyze-sql-logs",
+      "excerpt": "Provision Log Analytics, DCE + DCR, Azure OpenAI GPT-4o, AI Foundry, and the web app with one script.",
+      "level": 500,
+      "duration": "30 min",
+      "docType": "How-to",
+      "persona": "Cloud engineer",
+      "learningPath": "Analyze SQL Logs with Arc & AI",
+      "navOrder": 31,
+      "featured": false,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "72-configure-sql-simulate",
+      "title": "Configure SQL & Simulate Errors",
+      "module": "analyze-sql-logs",
+      "excerpt": "Install SQL Server on the VM and generate realistic error events to fill the Event table.",
+      "level": 500,
+      "duration": "25 min",
+      "docType": "How-to",
+      "persona": "Cloud / SQL engineer",
+      "learningPath": "Analyze SQL Logs with Arc & AI",
+      "navOrder": 32,
+      "featured": false,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "73-deploy-ai-app",
+      "title": "Deploy the AI App & Talk to Your Logs",
+      "module": "analyze-sql-logs",
+      "excerpt": "Deploy the Streamlit app, verify managed-identity RBAC, and ask your SQL logs questions in natural language.",
+      "level": 500,
+      "duration": "25 min",
+      "docType": "Build lab",
+      "persona": "Cloud / AI engineer",
+      "learningPath": "Analyze SQL Logs with Arc & AI",
+      "navOrder": 33,
+      "featured": true,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    },
+    {
+      "slug": "74-production-cleanup",
+      "title": "Production Hardening & Cleanup",
+      "module": "analyze-sql-logs",
+      "excerpt": "Harden the solution for production (private networking, scaling, HA) or tear it all down.",
+      "level": 500,
+      "duration": "20 min",
+      "docType": "How-to",
+      "persona": "Cloud engineer / architect",
+      "learningPath": "Analyze SQL Logs with Arc & AI",
+      "navOrder": 34,
+      "featured": false,
+      "reportIssue": "https://github.com/ibranibeny/se-labs/issues/new"
+    }
+  ]
+}
