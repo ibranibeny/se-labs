@@ -69,6 +69,10 @@ npm run preview    # preview the production build
 To re-tag an existing asset, edit its `conversations` / `solution_areas` /
 `asset_type` / `products` frontmatter in `src/content/modules/<slug>.md`.
 
+> **Maintainers:** for a guided walkthrough — full frontmatter schema, the GTM
+> taxonomy vocabulary, the draft/external-link pattern, and copy-paste templates —
+> use the **onboard-asset** skill in [`.github/skills/onboard-asset/`](.github/skills/onboard-asset/SKILL.md).
+
 ## Deployment
 
 Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds the app and

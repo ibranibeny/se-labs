@@ -48,6 +48,11 @@ export function ModulePage() {
       </Link>
 
       <div className="mt-4 flex flex-wrap items-center gap-2 border-b border-slate-200 pb-5">
+        {mod.draft && (
+          <Pill color="#b45309" dot>
+            Draft
+          </Pill>
+        )}
         {mod.levelRange && (
           <Pill color="#0078d4" solid>
             {mod.levelRange}
@@ -77,6 +82,29 @@ export function ModulePage() {
           ) : null;
         })}
       </div>
+
+      {mod.externalUrl && (
+        <a
+          href={mod.externalUrl}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="mt-5 flex flex-col items-start gap-3 rounded-xl border border-azure/30 bg-azure/5 p-4 transition hover:border-azure hover:bg-azure/10 sm:flex-row sm:items-center sm:justify-between"
+        >
+          <div>
+            <p className="font-bold text-slate-900">
+              {mod.draft
+                ? 'Draft entry — the full content lives on the source site'
+                : 'Open the full workshop on the source site'}
+            </p>
+            <p className="text-sm text-slate-600">
+              The complete, hands-on workshop opens in a new tab.
+            </p>
+          </div>
+          <span className="shrink-0 rounded-lg bg-azure px-4 py-2 text-sm font-semibold text-white">
+            Open the workshop ↗
+          </span>
+        </a>
+      )}
 
       <article className="mt-6">
         {body === null ? (
@@ -150,14 +178,23 @@ export function ModulePage() {
         >
           &larr; All assets
         </Link>
-        {firstLab && (
+        {firstLab ? (
           <Link
             to={`/labs/${firstLab.slug}`}
             className="rounded-lg bg-azure px-4 py-2 text-sm font-semibold text-white hover:bg-azure-dark"
           >
             Start: {firstLab.title} &rarr;
           </Link>
-        )}
+        ) : mod.externalUrl ? (
+          <a
+            href={mod.externalUrl}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="rounded-lg bg-azure px-4 py-2 text-sm font-semibold text-white hover:bg-azure-dark"
+          >
+            Open the workshop ↗
+          </a>
+        ) : null}
       </nav>
     </div>
   );

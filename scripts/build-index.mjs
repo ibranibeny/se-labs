@@ -77,6 +77,8 @@ async function main() {
         solutionAreas: arr(a.solution_areas),
         assetType: str(a.asset_type, 'Workshop'),
         products: arr(a.products),
+        draft: bool(a.draft),
+        externalUrl: a.external_url ? str(a.external_url) : undefined,
         labSlugs: mlabs.map((l) => l.slug),
         levels,
       };

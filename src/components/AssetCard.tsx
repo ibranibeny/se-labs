@@ -21,11 +21,18 @@ export function AssetCard({ asset }: { asset: ModuleAsset }) {
       <span className="h-1.5 w-full" style={{ backgroundColor: asset.color }} />
       <div className="flex flex-1 flex-col gap-3 p-5">
         <div className="flex flex-wrap items-center justify-between gap-2">
-          {at && (
-            <Pill color={at.color} dot className="shrink-0">
-              {at.icon} {at.id}
-            </Pill>
-          )}
+          <div className="flex flex-wrap items-center gap-2">
+            {at && (
+              <Pill color={at.color} dot className="shrink-0">
+                {at.icon} {at.id}
+              </Pill>
+            )}
+            {asset.draft && (
+              <Pill color="#b45309" className="shrink-0">
+                Draft
+              </Pill>
+            )}
+          </div>
           {asset.levelRange && (
             <Pill color="#0078d4" solid className="shrink-0">
               {asset.levelRange}
@@ -70,7 +77,11 @@ export function AssetCard({ asset }: { asset: ModuleAsset }) {
 
         <div className="flex items-center justify-between border-t border-slate-100 pt-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
           <span>
-            {asset.labs.length > 0 ? `${asset.labs.length} labs` : 'Asset'}
+            {asset.externalUrl
+              ? 'External ↗'
+              : asset.labs.length > 0
+                ? `${asset.labs.length} labs`
+                : 'Asset'}
             {asset.durationTotal ? ` · ${asset.durationTotal}` : ''}
           </span>
           <span className="text-azure opacity-0 transition group-hover:opacity-100">

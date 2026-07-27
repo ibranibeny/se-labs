@@ -25,6 +25,7 @@
         "Azure Monitor",
         "Governance"
       ],
+      "draft": false,
       "labSlugs": [
         "01-arc-overview",
         "02-arc-value",
@@ -63,6 +64,7 @@
         "Caddy",
         "Qwen"
       ],
+      "draft": false,
       "labSlugs": [
         "14-sglang-architecture",
         "11-provision-sglang-h100",
@@ -97,6 +99,7 @@
         "Agent Service",
         "BYOM"
       ],
+      "draft": false,
       "labSlugs": [
         "10-byom-overview",
         "13-wire-into-foundry"
@@ -130,6 +133,7 @@
         "Virtual Network",
         "Disaster Recovery"
       ],
+      "draft": false,
       "labSlugs": [
         "20-resiliency-overview",
         "21-deploy-resilient-architecture",
@@ -166,6 +170,7 @@
         ".NET",
         "Container Instances"
       ],
+      "draft": false,
       "labSlugs": [
         "30-appinsights-overview",
         "31-enable-app-insights",
@@ -204,6 +209,7 @@
         "Application Gateway",
         "Bastion"
       ],
+      "draft": false,
       "labSlugs": [
         "40-network-security-overview",
         "41-build-network-security-lab",
@@ -240,6 +246,7 @@
         "React",
         "FastAPI"
       ],
+      "draft": false,
       "labSlugs": [
         "50-spec-kit-overview",
         "51-constitution-specification",
@@ -276,6 +283,7 @@
         "vLLM",
         "GPU"
       ],
+      "draft": false,
       "labSlugs": [
         "60-kaito-overview",
         "61-deploy-aks-kaito-model",
@@ -312,6 +320,7 @@
         "GPT-4o",
         "Streamlit"
       ],
+      "draft": false,
       "labSlugs": [
         "70-analyze-sql-overview",
         "71-deploy-infrastructure",
@@ -322,6 +331,38 @@
       "levels": [
         500
       ]
+    },
+    {
+      "slug": "foundry-agent-service-portal",
+      "title": "Microsoft Foundry Agent Service — Portal-First Workshop",
+      "excerpt": "Build, tool, ground, evaluate, and publish an AI agent end-to-end — entirely in the Microsoft Foundry portal, no local setup.",
+      "levelRange": "L100–L300",
+      "durationTotal": "~4–6 hours",
+      "order": 10,
+      "icon": "fas fa-robot",
+      "color": "#6D28D9",
+      "sourceSite": "https://jon-soong-msft.github.io/35-ai-foundry-handson/index.html",
+      "sourceRepo": "https://github.com/PlagueHO/foundry-agentic-workshop",
+      "conversations": [
+        "ubiquitous-innovation",
+        "amplify-intelligence"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Workshop",
+      "products": [
+        "Azure AI Foundry",
+        "Agent Service",
+        "Foundry IQ",
+        "MCP",
+        "Agent Framework",
+        "M365 Copilot"
+      ],
+      "draft": true,
+      "externalUrl": "https://jon-soong-msft.github.io/35-ai-foundry-handson/index.html",
+      "labSlugs": [],
+      "levels": []
     }
   ],
   "labs": [

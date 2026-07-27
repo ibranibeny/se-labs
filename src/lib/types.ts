@@ -53,7 +53,10 @@ export interface ModuleAsset {
   solutionAreas: SolutionAreaId[];
   assetType: AssetType;
   products: string[];
-  // derived
+  // status / external link (draft assets point out to their live content)
+  draft?: boolean;
+  externalUrl?: string;
+  // content + derived
   labs: Lab[];
   levels: number[];
 }

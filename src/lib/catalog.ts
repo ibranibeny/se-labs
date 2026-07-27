@@ -39,6 +39,8 @@ interface RawModule {
   solutionAreas: string[];
   assetType: string;
   products: string[];
+  draft?: boolean;
+  externalUrl?: string;
   labSlugs: string[];
   levels: number[];
 }
@@ -75,6 +77,8 @@ export const modules: ModuleAsset[] = (index.modules as RawModule[]).map((m) => 
   solutionAreas: m.solutionAreas as SolutionAreaId[],
   assetType: m.assetType as AssetType,
   products: m.products,
+  draft: m.draft,
+  externalUrl: m.externalUrl,
   labs: m.labSlugs
     .map((s) => labBySlug.get(s))
     .filter((l): l is Lab => Boolean(l)),
