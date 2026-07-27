@@ -5,3 +5,10 @@ _site/
 vendor/
 Gemfile.lock
 .bundle/
+
+# Node / Vite build
+node_modules/
+dist/
+.vite/
+*.local
+npm-debug.log*

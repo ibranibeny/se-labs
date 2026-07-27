@@ -1,0 +1,79 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* ---- Design tokens (FY27 GTM framework palette) ---- */
+@theme {
+  --color-azure: #0078d4;
+  --color-azure-dark: #005a9e;
+  --color-navy: #0b3d91;
+  --color-frontier: #2aa79b; /* teal — Frontier tier */
+  --color-core: #1f4e9c;     /* blue — Core tier */
+}
+
+/* ---- Base ---- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-slate-50 text-slate-800 antialiased;
+}
+
+/* ---- Markdown (prose) tuning so highlight.js github theme reads well ---- */
+.markdown-body :where(pre) {
+  background-color: #f6f8fa;
+  color: #24292e;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+/* inline code (not inside a pre) */
+.markdown-body :where(code):not(:where(pre *)) {
+  background: #eef2f7;
+  color: #0b3d91;
+  padding: 0.12em 0.38em;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.86em;
+}
+
+/* remove prose's decorative backticks around inline code */
+.markdown-body :where(code)::before,
+.markdown-body :where(code)::after {
+  content: none !important;
+}
+
+.markdown-body :where(table) {
+  display: block;
+  overflow-x: auto;
+  width: max-content;
+  max-width: 100%;
+}
+
+.markdown-body img {
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+/* ---- Mermaid ---- */
+.mermaid {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* thin, tasteful scrollbars for filter panel */
+.scroll-slim::-webkit-scrollbar {
+  width: 8px;
+}
+.scroll-slim::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
