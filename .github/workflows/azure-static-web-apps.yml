@@ -27,10 +27,11 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: upload
-          # Hybrid Next.js: Oryx detects and builds the app at the repo root.
+          # Statically exported Next.js: Oryx builds at the repo root and the
+          # pre-rendered site lands in `out/`.
           app_location: "/"
           api_location: ""
-          output_location: ""
+          output_location: "out"
         env:
           # NEXT_PUBLIC_* values are inlined at build time.
           NEXT_PUBLIC_GITHUB_OWNER: ${{ vars.NEXT_PUBLIC_GITHUB_OWNER }}
