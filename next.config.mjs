@@ -1,8 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Standalone output keeps the deployed bundle small enough for the Azure
-  // Static Web Apps hybrid Next.js 250 MB limit.
-  output: 'standalone',
+  // Every route in this app is fully static (prerendered at build time via
+  // generateStaticParams / static pages) — there's no SSR, middleware, API
+  // routes, or ISR anywhere in the app. Azure Static Web Apps' Next.js
+  // "hybrid" mode (output: 'standalone', built in-place by Oryx) is still in
+  // preview and fails with an opaque "An unknown exception has occurred"
+  // for this app. Since we don't need any hybrid/server features, use plain
+  // static HTML export instead, which Azure SWA deploys as a regular static
+  // site and is fully supported/stable.
+  output: 'export',
   // Don't auto-generate AGENTS.md / CLAUDE.md — this repo has its own conventions.
   agentRules: false,
   // A stray lockfile in the home dir makes Next mis-infer the workspace root.
