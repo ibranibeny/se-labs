@@ -1,3 +1,6 @@
+'use client';
+
+import 'highlight.js/styles/github.css';
 import { Suspense, isValidElement, lazy, type ReactNode } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import type { ModuleAsset } from '../lib/types';
 import {
   assetTypeById,
@@ -15,7 +15,7 @@ export function AssetCard({ asset }: { asset: ModuleAsset }) {
 
   return (
     <Link
-      to={`/modules/${asset.slug}`}
+      href={`/modules/${asset.slug}`}
       className="group flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-azure hover:shadow-lg"
     >
       <span className="h-1.5 w-full" style={{ backgroundColor: asset.color }} />

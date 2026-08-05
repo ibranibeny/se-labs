@@ -6,9 +6,17 @@ vendor/
 Gemfile.lock
 .bundle/
 
-# Node / Vite build
+# Node / Next build
 node_modules/
 dist/
+.next/
+next-env.d.ts
+*.tsbuildinfo
 .vite/
 *.local
 npm-debug.log*
+
+# Env
+.env
+.env.local
+.env*.local

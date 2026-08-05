@@ -1,14 +1,11 @@
-// Lazily loads a single Markdown body on demand. Kept separate from catalog.ts
-// so this (and its per-file chunks) only load with the content pages, never on
-// the catalog landing.
-//
-// Metadata already comes from the generated index, so here we only need to
-// strip the frontmatter block — no YAML parser required on the client.
+// Loads a single Markdown body from disk on the server. Metadata already comes
+// from the generated index, so here we only strip the frontmatter block — no
+// YAML parser required. Called only from Server Components (module/lab pages),
+// which are statically generated at build time.
+import { promises as fs } from 'node:fs';
+import path from 'node:path';
 
-const loaders = import.meta.glob('/src/content/**/*.md', {
-  query: '?raw',
-  import: 'default',
-}) as Record<string, () => Promise<string>>;
+const CONTENT_DIR = path.join(process.cwd(), 'src', 'content');
 
 /** Remove the leading `--- ... ---` frontmatter block. */
 function stripFrontmatter(raw: string): string {
@@ -22,10 +19,12 @@ function cleanBody(body: string): string {
 }
 
 async function loadBody(dir: 'modules' | 'labs', slug: string): Promise<string> {
-  const loader = loaders[`/src/content/${dir}/${slug}.md`];
-  if (!loader) return '';
-  const raw = await loader();
-  return cleanBody(stripFrontmatter(raw));
+  try {
+    const raw = await fs.readFile(path.join(CONTENT_DIR, dir, `${slug}.md`), 'utf8');
+    return cleanBody(stripFrontmatter(raw));
+  } catch {
+    return '';
+  }
 }
 
 export const loadModuleBody = (slug: string) => loadBody('modules', slug);

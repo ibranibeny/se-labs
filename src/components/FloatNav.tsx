@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 export interface NavItem {
   to: string;
@@ -15,13 +15,13 @@ export function FloatNav({ prev, next }: { prev?: NavItem; next?: NavItem }) {
   return (
     <>
       {prev && (
-        <Link to={prev.to} aria-label={`Previous: ${prev.label}`} className={`${base} left-3.5`}>
+        <Link href={prev.to} aria-label={`Previous: ${prev.label}`} className={`${base} left-3.5`}>
           <span className="text-xl leading-none">&larr;</span>
           <span className={`${label} left-14`}>{prev.label}</span>
         </Link>
       )}
       {next && (
-        <Link to={next.to} aria-label={`Next: ${next.label}`} className={`${base} right-3.5`}>
+        <Link href={next.to} aria-label={`Next: ${next.label}`} className={`${base} right-3.5`}>
           <span className="text-xl leading-none">&rarr;</span>
           <span className={`${label} right-14`}>{next.label}</span>
         </Link>

@@ -1,38 +1,45 @@
-import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { getModule } from '../lib/catalog';
-import { loadModuleBody } from '../lib/body';
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import Link from 'next/link';
+import { getModule, modules } from '@/lib/catalog';
+import { loadModuleBody } from '@/lib/body';
 import {
   assetTypeById,
   conversationById,
   solutionAreaById,
   tierColor,
-} from '../data/taxonomy';
-import { Markdown } from '../components/Markdown';
-import { Pill } from '../components/Badge';
-import { FloatNav } from '../components/FloatNav';
-import { NotFoundPage } from './NotFoundPage';
+} from '@/data/taxonomy';
+import { Markdown } from '@/components/Markdown';
+import { Pill } from '@/components/Badge';
+import { FloatNav } from '@/components/FloatNav';
 
-export function ModulePage() {
-  const { slug } = useParams();
-  const mod = slug ? getModule(slug) : undefined;
-  const [body, setBody] = useState<string | null>(null);
+export function generateStaticParams() {
+  return modules.map((m) => ({ slug: m.slug }));
+}
 
-  useEffect(() => {
-    let active = true;
-    setBody(null);
-    if (mod) {
-      loadModuleBody(mod.slug).then((b) => {
-        if (active) setBody(b);
-      });
-    }
-    return () => {
-      active = false;
-    };
-  }, [mod?.slug]);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const mod = getModule(slug);
+  return {
+    title: mod ? `${mod.title} — Major Growth SE` : 'Asset not found',
+    description: mod?.excerpt,
+  };
+}
 
-  if (!mod) return <NotFoundPage />;
+export default async function ModulePage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const mod = getModule(slug);
+  if (!mod) notFound();
 
+  const body = await loadModuleBody(mod.slug);
   const at = assetTypeById.get(mod.assetType);
   const firstLab = mod.labs[0];
 
@@ -43,7 +50,7 @@ export function ModulePage() {
         next={firstLab ? { to: `/labs/${firstLab.slug}`, label: firstLab.title } : undefined}
       />
 
-      <Link to="/" className="text-sm font-semibold text-azure hover:underline">
+      <Link href="/" className="text-sm font-semibold text-azure hover:underline">
         &larr; Back to catalog
       </Link>
 
@@ -107,11 +114,7 @@ export function ModulePage() {
       )}
 
       <article className="mt-6">
-        {body === null ? (
-          <p className="text-sm text-slate-400">Loading…</p>
-        ) : (
-          <Markdown content={body} />
-        )}
+        <Markdown content={body} />
       </article>
 
       {mod.labs.length > 0 && (
@@ -121,7 +124,7 @@ export function ModulePage() {
             {mod.labs.map((lab) => (
               <Link
                 key={lab.slug}
-                to={`/labs/${lab.slug}`}
+                href={`/labs/${lab.slug}`}
                 className="group rounded-xl border border-slate-200 bg-white p-4 transition hover:-translate-y-0.5 hover:border-azure hover:shadow-md"
               >
                 <Pill color="#0078d4" solid>
@@ -173,14 +176,14 @@ export function ModulePage() {
 
       <nav className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 pt-5">
         <Link
-          to="/"
+          href="/"
           className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
         >
           &larr; All assets
         </Link>
         {firstLab ? (
           <Link
-            to={`/labs/${firstLab.slug}`}
+            href={`/labs/${firstLab.slug}`}
             className="rounded-lg bg-azure px-4 py-2 text-sm font-semibold text-white hover:bg-azure-dark"
           >
             Start: {firstLab.title} &rarr;

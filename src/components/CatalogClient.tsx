@@ -1,12 +1,14 @@
-import { useMemo, useState } from 'react';
-import { assets } from '../lib/catalog';
-import { filterAssets } from '../lib/filters';
-import { useCatalogFilters } from '../hooks/useCatalogFilters';
-import { FilterSidebar } from '../components/FilterSidebar';
-import { SearchBox } from '../components/SearchBox';
-import { AssetCard } from '../components/AssetCard';
+'use client';
 
-export function CatalogPage() {
+import { useMemo, useState } from 'react';
+import { assets } from '@/lib/catalog';
+import { filterAssets } from '@/lib/filters';
+import { useCatalogFilters } from '@/hooks/useCatalogFilters';
+import { FilterSidebar } from '@/components/FilterSidebar';
+import { SearchBox } from '@/components/SearchBox';
+import { AssetCard } from '@/components/AssetCard';
+
+export function CatalogClient() {
   const { filters, setQ, toggle, clearAll } = useCatalogFilters();
   const [showFilters, setShowFilters] = useState(false);
 
