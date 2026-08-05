@@ -16,7 +16,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "moduleDetection": "force",
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "incremental": true,
     "noUnusedLocals": true,
     "noFallthroughCasesInSwitch": true,
