@@ -1,32 +1,39 @@
-import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { getLab, getModule } from '../lib/catalog';
-import { loadLabBody } from '../lib/body';
-import { Markdown } from '../components/Markdown';
-import { Pill } from '../components/Badge';
-import { FloatNav, type NavItem } from '../components/FloatNav';
-import { NotFoundPage } from './NotFoundPage';
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import Link from 'next/link';
+import { getLab, getModule, labs } from '@/lib/catalog';
+import { loadLabBody } from '@/lib/body';
+import { Markdown } from '@/components/Markdown';
+import { Pill } from '@/components/Badge';
+import { FloatNav, type NavItem } from '@/components/FloatNav';
 
-export function LabPage() {
-  const { slug } = useParams();
-  const lab = slug ? getLab(slug) : undefined;
-  const [body, setBody] = useState<string | null>(null);
+export function generateStaticParams() {
+  return labs.map((l) => ({ slug: l.slug }));
+}
 
-  useEffect(() => {
-    let active = true;
-    setBody(null);
-    if (lab) {
-      loadLabBody(lab.slug).then((b) => {
-        if (active) setBody(b);
-      });
-    }
-    return () => {
-      active = false;
-    };
-  }, [lab?.slug]);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const lab = getLab(slug);
+  return {
+    title: lab ? `${lab.title} — Major Growth SE` : 'Lab not found',
+    description: lab?.excerpt,
+  };
+}
 
-  if (!lab) return <NotFoundPage />;
+export default async function LabPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const lab = getLab(slug);
+  if (!lab) notFound();
 
+  const body = await loadLabBody(lab.slug);
   const mod = getModule(lab.module);
   const siblings = mod?.labs ?? [];
   const idx = siblings.findIndex((l) => l.slug === lab.slug);
@@ -48,7 +55,7 @@ export function LabPage() {
 
       {mod && (
         <Link
-          to={moduleHref}
+          href={moduleHref}
           className="text-sm font-semibold text-azure hover:underline"
         >
           &larr; Part of: {mod.title}
@@ -78,11 +85,7 @@ export function LabPage() {
       </div>
 
       <article className="mt-6">
-        {body === null ? (
-          <p className="text-sm text-slate-400">Loading…</p>
-        ) : (
-          <Markdown content={body} />
-        )}
+        <Markdown content={body} />
       </article>
 
       {mod?.sourceSite && (
@@ -114,13 +117,13 @@ export function LabPage() {
 
       <nav className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 pt-5">
         <Link
-          to={prevNav.to}
+          href={prevNav.to}
           className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
         >
           &larr; {prevNav.label}
         </Link>
         <Link
-          to={nextNav.to}
+          href={nextNav.to}
           className="rounded-lg bg-azure px-4 py-2 text-sm font-semibold text-white hover:bg-azure-dark"
         >
           {nextNav.label} &rarr;

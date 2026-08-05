@@ -5,14 +5,15 @@ hands-on workshops, and reference architectures — presented as a **filterable
 catalog** mapped to the **FY27 GTM framework**. Built so that AEs and DES can
 quickly discover which SE assets exist to accelerate a deal.
 
-🔗 **Live site:** https://ibranibeny.github.io/se-labs/
+🔗 **Live site:** deployed on **Azure Static Web Apps** (hybrid Next.js)
 
 ## Stack
 
-- **React 19 + TypeScript + Vite** (single-page app, hash routing)
+- **Next.js (App Router) + React 19 + TypeScript** (SSR/SSG, real path routing)
 - **Tailwind CSS v4** for styling
 - **react-markdown + Mermaid + highlight.js** to render lab content
-- Published to **GitHub Pages** via GitHub Actions
+- A client-side **Submit an asset** flow prepares GitHub issues without app secrets
+- Deployed to **Azure Static Web Apps** via GitHub Actions (per-PR preview environments)
 
 ## How it works
 
@@ -27,8 +28,8 @@ src/generated/         # catalog-index.json (metadata, auto-generated)
 
 A build step (`scripts/build-index.mjs`, run automatically before `dev`/`build`)
 parses the frontmatter into a lightweight metadata index. The catalog landing
-loads only that index; Markdown bodies load lazily per page, so the landing stays
-fast as the catalog grows.
+loads only that index; Markdown bodies are read on the server per page (SSG), so
+the landing stays fast as the catalog grows and detail pages stay crawlable.
 
 ### Filter facets (GTM taxonomy)
 
@@ -45,9 +46,9 @@ URL query string so any filtered view is shareable and deep-linkable.
 
 ```bash
 npm install
-npm run dev        # http://localhost:5173/se-labs/
-npm run build      # production build to dist/
-npm run preview    # preview the production build
+npm run dev        # http://localhost:3000
+npm run build      # production build (.next/)
+npm start          # run the production server
 ```
 
 ## Adding a new asset
@@ -73,14 +74,44 @@ To re-tag an existing asset, edit its `conversations` / `solution_areas` /
 > taxonomy vocabulary, the draft/external-link pattern, and copy-paste templates —
 > use the **onboard-asset** skill in [`.github/skills/onboard-asset/`](.github/skills/onboard-asset/SKILL.md).
 
-## Deployment
+## Deployment — Azure Static Web Apps
 
-Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds the app and
-publishes `dist/` to GitHub Pages. In the repository **Settings → Pages**, set the
-source to **GitHub Actions**.
+The app is a **hybrid Next.js** site (static catalog + server-rendered detail pages)
+deployed to **Azure Static Web Apps**.
 
-The Vite `base` is `/se-labs/` (see `vite.config.ts`); update it if the repository
-is renamed.
+- `.github/workflows/azure-static-web-apps.yml` builds and deploys on push to `main`
+  and creates a **preview environment for every pull request** — the reviewer sees the
+  new asset card live before approving.
+- Create the SWA resource and connect this repo; Azure provisions the
+  `AZURE_STATIC_WEB_APPS_API_TOKEN` secret. Build settings: `app_location: "/"`,
+  `output_location: ""` (Oryx detects Next.js).
+- `next.config.mjs` sets `output: 'standalone'` to stay under the SWA 250 MB hybrid limit.
+
+## Submit an asset via GitHub issue
+
+`/submit` is a guided form (taxonomy-driven pickers, a live **card** preview, and a
+Write/Preview **Markdown** preview). It validates the form in the browser and builds a
+prefilled GitHub issue containing the proposed `src/content/modules/<slug>.md` file.
+
+- Small submissions open directly on GitHub with the complete issue prefilled.
+- Large submissions can exceed GitHub's URL limit. The portal first writes the complete
+  issue body to the clipboard and waits for the browser to confirm success. Only then
+  does it show **Continue to GitHub**, where the submitter pastes the body and files the
+  issue under their GitHub account. If clipboard access is denied, GitHub is not opened.
+
+A maintainer reviews the issue and implements an accepted request through the normal
+repository pull-request workflow. The SWA preview is available before that PR is merged;
+the merge redeploys the site and publishes the card.
+
+**Configure** (copy `.env.example`; set these as GitHub *Variables* for the build):
+
+| Setting | Purpose |
+|---|---|
+| `NEXT_PUBLIC_GITHUB_OWNER`, `NEXT_PUBLIC_GITHUB_REPO` | Public repo coordinates for the prefilled issue link (defaults `ibranibeny`/`se-labs`). |
+
+**Human gate — protect `main`:** require a pull request, at least one approving review
+(wire up `CODEOWNERS`), and passing checks before merge. An issue alone never changes
+the catalog; a maintainer must merge the resulting implementation PR.
 
 ## Attribution
 

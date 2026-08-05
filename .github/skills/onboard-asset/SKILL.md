@@ -5,9 +5,15 @@ description: "Use when adding, onboarding, drafting, or re-tagging an asset in t
 
 # Onboard a new asset
 
-This repo is a React catalog of Major Growth SE assets, mapped to the FY27 GTM
-framework. Each **asset** is a Markdown file with YAML frontmatter. Adding one is
-just creating a file (plus optional step files) — the catalog updates automatically.
+This repo is a Next.js (App Router) catalog of Major Growth SE assets, mapped to the
+FY27 GTM framework. Each **asset** is a Markdown file with YAML frontmatter. Adding one
+is just creating a file (plus optional step files) — the catalog updates automatically.
+
+> **Two ways to onboard.** Maintainers add the Markdown file directly (this guide).
+> Anyone else can use the in-app **Submit an asset** form at `/submit` — it validates the
+> taxonomy and prepares a GitHub issue containing the proposed
+> `src/content/modules/<slug>.md`. The submitter signs in to file the issue, and a
+> maintainer implements an accepted request through the normal review workflow.
 
 ## Where content lives
 
@@ -29,7 +35,7 @@ Bundled templates you can copy from:
 2. **Fill the frontmatter** (schema below). Pick taxonomy values from the valid lists.
 3. **(Optional) Add labs** — one file per step in `src/content/labs/`, each with
    `module: <slug>` and an increasing `nav_order`.
-4. **Preview**: `npm run dev` → http://localhost:5173/se-labs/ . The metadata index
+4. **Preview**: `npm run dev` → http://localhost:3000 . The metadata index
    regenerates automatically (the `predev` hook). To regenerate without restarting,
    run `npm run build:index`.
 5. **Verify** the card appears, its badges/filters are correct, and the detail page

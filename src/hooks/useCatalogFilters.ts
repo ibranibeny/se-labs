@@ -1,5 +1,7 @@
+'use client';
+
 import { useCallback, useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import type { AssetType, ConversationId, SolutionAreaId } from '../lib/types';
 import { EMPTY_FILTERS, type FacetKey, type FilterState } from '../lib/filters';
 
@@ -34,12 +36,21 @@ function filtersToParams(f: FilterState): URLSearchParams {
 
 /** Filter state that lives in the URL query string (shareable + deep-linkable). */
 export function useCatalogFilters() {
-  const [params, setParams] = useSearchParams();
-  const filters = useMemo(() => paramsToFilters(params), [params]);
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const filters = useMemo(
+    () => paramsToFilters(new URLSearchParams(searchParams.toString())),
+    [searchParams],
+  );
 
   const commit = useCallback(
-    (next: FilterState) => setParams(filtersToParams(next), { replace: true }),
-    [setParams],
+    (next: FilterState) => {
+      const qs = filtersToParams(next).toString();
+      router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
+    },
+    [router, pathname],
   );
 
   const setQ = useCallback(
