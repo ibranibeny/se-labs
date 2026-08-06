@@ -5,7 +5,7 @@ hands-on workshops, and reference architectures — presented as a **filterable
 catalog** mapped to the **FY27 GTM framework**. Built so that AEs and DES can
 quickly discover which SE assets exist to accelerate a deal.
 
-🔗 **Live site:** deployed on **Azure Static Web Apps** (hybrid Next.js)
+🔗 **Live site:** <https://ibranibeny.github.io/se-labs/> (GitHub Pages)
 
 ## Stack
 
@@ -13,7 +13,7 @@ quickly discover which SE assets exist to accelerate a deal.
 - **Tailwind CSS v4** for styling
 - **react-markdown + Mermaid + highlight.js** to render lab content
 - A client-side **Submit an asset** flow prepares GitHub issues without app secrets
-- Deployed to **Azure Static Web Apps** via GitHub Actions (per-PR preview environments)
+- Deployed to **GitHub Pages** via GitHub Actions on every push to `main`
 
 ## How it works
 
@@ -74,18 +74,16 @@ To re-tag an existing asset, edit its `conversations` / `solution_areas` /
 > taxonomy vocabulary, the draft/external-link pattern, and copy-paste templates —
 > use the **onboard-asset** skill in [`.github/skills/onboard-asset/`](.github/skills/onboard-asset/SKILL.md).
 
-## Deployment — Azure Static Web Apps
+## Deployment — GitHub Pages
 
-The app is a **hybrid Next.js** site (static catalog + server-rendered detail pages)
-deployed to **Azure Static Web Apps**.
+The app is a **statically exported Next.js** site (`output: 'export'`) published to
+**GitHub Pages** at <https://ibranibeny.github.io/se-labs/>.
 
-- `.github/workflows/azure-static-web-apps.yml` builds and deploys on push to `main`
-  and creates a **preview environment for every pull request** — the reviewer sees the
-  new asset card live before approving.
-- Create the SWA resource and connect this repo; Azure provisions the
-  `AZURE_STATIC_WEB_APPS_API_TOKEN` secret. Build settings: `app_location: "/"`,
-  `output_location: ""` (Oryx detects Next.js).
-- `next.config.mjs` sets `output: 'standalone'` to stay under the SWA 250 MB hybrid limit.
+- `.github/workflows/deploy-gh-pages.yml` builds and deploys on every push to `main`.
+- The build runs with `DEPLOY_TARGET=gh-pages`, which sets `basePath`/`assetPrefix` to
+  `/se-labs` so assets resolve under the project sub-path. It writes a `.nojekyll` file,
+  uploads the `out/` folder as a Pages artifact, and publishes via `actions/deploy-pages`.
+- In **Settings → Pages**, the build source is **GitHub Actions** (no extra secrets needed).
 
 ## Submit an asset via GitHub issue
 
@@ -100,8 +98,8 @@ prefilled GitHub issue containing the proposed `src/content/modules/<slug>.md` f
   issue under their GitHub account. If clipboard access is denied, GitHub is not opened.
 
 A maintainer reviews the issue and implements an accepted request through the normal
-repository pull-request workflow. The SWA preview is available before that PR is merged;
-the merge redeploys the site and publishes the card.
+repository pull-request workflow. Merging the implementation PR to `main` redeploys the
+site and publishes the card.
 
 **Configure** (copy `.env.example`; set these as GitHub *Variables* for the build):
 
