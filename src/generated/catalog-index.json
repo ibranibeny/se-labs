@@ -189,7 +189,7 @@
       "title": "Network Security (Defense-in-Depth)",
       "excerpt": "Build a layered defense-in-depth network — WAF, Azure Firewall Premium + IDPS, segmentation, forced tunneling, and Bastion-only access — then attack it and read the evidence.",
       "levelRange": "L100–L400",
-      "durationTotal": "~3.5 hours",
+      "durationTotal": "~half a day",
       "order": 6,
       "icon": "fas fa-shield-halved",
       "color": "#B4009E",
@@ -207,9 +207,12 @@
         "WAF",
         "Front Door",
         "Application Gateway",
-        "Bastion"
+        "Bastion",
+        "Container Instances",
+        "Log Analytics"
       ],
       "draft": false,
+      "externalUrl": "https://ibranibeny.github.io/network-security-workshop/",
       "labSlugs": [
         "40-network-security-overview",
         "41-build-network-security-lab",
