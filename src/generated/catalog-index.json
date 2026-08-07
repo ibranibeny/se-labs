@@ -565,6 +565,37 @@
       "draft": true,
       "labSlugs": [],
       "levels": []
+    },
+    {
+      "slug": "azure-network-security-workshop",
+      "title": "Azure Network Security Workshop",
+      "excerpt": "The facilitated, full-day delivery of the Azure network security demo lab — agenda, guided build modules, validation labs, instructor material, and a mandatory teardown.",
+      "levelRange": "L100–L400",
+      "durationTotal": "~1 day",
+      "order": 18,
+      "icon": "fas fa-network-wired",
+      "color": "#B4009E",
+      "sourceSite": "https://ibranibeny.github.io/network-security-workshop/",
+      "sourceRepo": "https://github.com/ibranibeny/network-security-workshop",
+      "conversations": [
+        "trusted-secure-platform"
+      ],
+      "solutionAreas": [
+        "Security"
+      ],
+      "assetType": "Workshop",
+      "products": [
+        "Azure Firewall",
+        "WAF",
+        "Front Door",
+        "Application Gateway",
+        "Bastion",
+        "Log Analytics"
+      ],
+      "draft": true,
+      "externalUrl": "https://ibranibeny.github.io/network-security-workshop/",
+      "labSlugs": [],
+      "levels": []
     }
   ],
   "labs": [
