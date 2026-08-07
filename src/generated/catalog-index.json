@@ -568,6 +568,38 @@
       "draft": true,
       "labSlugs": [],
       "levels": []
+    },
+    {
+      "slug": "apim-aca-openai-workshop",
+      "title": "Govern Azure OpenAI with APIM. Run the app on ACA.",
+      "excerpt": "Build and operate a governed AI request path from an application on Azure Container Apps through API Management to Azure OpenAI.",
+      "levelRange": "L400",
+      "durationTotal": "7 hours",
+      "order": 18,
+      "icon": "fas fa-route",
+      "color": "#0078D4",
+      "sourceSite": "https://ibranibeny.github.io/apim-aca-openai-workshop/",
+      "sourceRepo": "https://github.com/ibranibeny/apim-aca-openai-workshop",
+      "conversations": [
+        "trusted-secure-platform",
+        "modernize-confidence"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Workshop",
+      "products": [
+        "Azure API Management",
+        "Azure Container Apps",
+        "Azure OpenAI",
+        "Azure Database for PostgreSQL",
+        "Bicep",
+        "Application Insights"
+      ],
+      "draft": false,
+      "externalUrl": "https://ibranibeny.github.io/apim-aca-openai-workshop/",
+      "labSlugs": [],
+      "levels": []
     }
   ],
   "labs": [
