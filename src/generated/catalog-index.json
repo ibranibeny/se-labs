@@ -189,7 +189,7 @@
       "title": "Network Security (Defense-in-Depth)",
       "excerpt": "Build a layered defense-in-depth network — WAF, Azure Firewall Premium + IDPS, segmentation, forced tunneling, and Bastion-only access — then attack it and read the evidence.",
       "levelRange": "L100–L400",
-      "durationTotal": "~3.5 hours",
+      "durationTotal": "~half a day",
       "order": 6,
       "icon": "fas fa-shield-halved",
       "color": "#B4009E",
@@ -207,9 +207,12 @@
         "WAF",
         "Front Door",
         "Application Gateway",
-        "Bastion"
+        "Bastion",
+        "Container Instances",
+        "Log Analytics"
       ],
       "draft": false,
+      "externalUrl": "https://ibranibeny.github.io/network-security-workshop/",
       "labSlugs": [
         "40-network-security-overview",
         "41-build-network-security-lab",
@@ -563,37 +566,6 @@
         "FSLogix"
       ],
       "draft": true,
-      "labSlugs": [],
-      "levels": []
-    },
-    {
-      "slug": "azure-network-security-workshop",
-      "title": "Azure Network Security Workshop",
-      "excerpt": "The facilitated, full-day delivery of the Azure network security demo lab — agenda, guided build modules, validation labs, instructor material, and a mandatory teardown.",
-      "levelRange": "L100–L400",
-      "durationTotal": "~1 day",
-      "order": 18,
-      "icon": "fas fa-network-wired",
-      "color": "#B4009E",
-      "sourceSite": "https://ibranibeny.github.io/network-security-workshop/",
-      "sourceRepo": "https://github.com/ibranibeny/network-security-workshop",
-      "conversations": [
-        "trusted-secure-platform"
-      ],
-      "solutionAreas": [
-        "Security"
-      ],
-      "assetType": "Workshop",
-      "products": [
-        "Azure Firewall",
-        "WAF",
-        "Front Door",
-        "Application Gateway",
-        "Bastion",
-        "Log Analytics"
-      ],
-      "draft": true,
-      "externalUrl": "https://ibranibeny.github.io/network-security-workshop/",
       "labSlugs": [],
       "levels": []
     }
