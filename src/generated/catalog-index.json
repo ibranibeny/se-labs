@@ -568,6 +568,71 @@
       "draft": true,
       "labSlugs": [],
       "levels": []
+    },
+    {
+      "slug": "apim-aca-openai-workshop",
+      "title": "Govern Azure OpenAI with APIM. Run the app on ACA.",
+      "excerpt": "Build and operate a governed AI request path from an application on Azure Container Apps through API Management to Azure OpenAI.",
+      "levelRange": "L400",
+      "durationTotal": "7 hours",
+      "order": 18,
+      "icon": "fas fa-route",
+      "color": "#0078D4",
+      "sourceSite": "https://ibranibeny.github.io/apim-aca-openai-workshop/",
+      "sourceRepo": "https://github.com/ibranibeny/apim-aca-openai-workshop",
+      "conversations": [
+        "trusted-secure-platform",
+        "modernize-confidence"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Workshop",
+      "products": [
+        "Azure API Management",
+        "Azure Container Apps",
+        "Azure OpenAI",
+        "Azure Database for PostgreSQL",
+        "Bicep",
+        "Application Insights"
+      ],
+      "draft": false,
+      "externalUrl": "https://ibranibeny.github.io/apim-aca-openai-workshop/",
+      "labSlugs": [],
+      "levels": []
+    },
+    {
+      "slug": "aro-cli-mcp-workshop",
+      "title": "Deploy ARO. Connect OpenShift. Operate it through MCP.",
+      "excerpt": "Create a managed-identity Azure Red Hat OpenShift cluster with Azure CLI, deploy the Kubernetes MCP server, and query the live cluster from GitHub Copilot in VS Code.",
+      "levelRange": "L300",
+      "durationTotal": "90–120 minutes",
+      "order": 19,
+      "icon": "fas fa-dharmachakra",
+      "color": "#EE0000",
+      "sourceSite": "https://ibranibeny.github.io/aro-cli-mcp-workshop/",
+      "sourceRepo": "https://github.com/ibranibeny/aro-cli-mcp-workshop",
+      "conversations": [
+        "modernize-confidence",
+        "ubiquitous-innovation"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Workshop",
+      "products": [
+        "Azure Red Hat OpenShift",
+        "OpenShift CLI",
+        "Kubernetes MCP Server",
+        "GitHub Copilot",
+        "Visual Studio Code",
+        "Azure CLI",
+        "Helm"
+      ],
+      "draft": false,
+      "externalUrl": "https://ibranibeny.github.io/aro-cli-mcp-workshop/",
+      "labSlugs": [],
+      "levels": []
     }
   ],
   "labs": [
