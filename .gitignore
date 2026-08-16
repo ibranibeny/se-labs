@@ -5,6 +5,7 @@ _site/
 vendor/
 Gemfile.lock
 .bundle/
+ARCHITECTURE.md
 
 # Node / Next build
 node_modules/
