@@ -600,6 +600,74 @@
       "externalUrl": "https://ibranibeny.github.io/apim-aca-openai-workshop/",
       "labSlugs": [],
       "levels": []
+    },
+    {
+      "slug": "aro-cli-mcp-workshop",
+      "title": "Deploy ARO. Connect OpenShift. Operate it through MCP.",
+      "excerpt": "Create a managed-identity Azure Red Hat OpenShift cluster with Azure CLI, deploy the Kubernetes MCP server, and query the live cluster from GitHub Copilot in VS Code.",
+      "levelRange": "L300",
+      "durationTotal": "90–120 minutes",
+      "order": 19,
+      "icon": "fas fa-dharmachakra",
+      "color": "#EE0000",
+      "sourceSite": "https://ibranibeny.github.io/aro-cli-mcp-workshop/",
+      "sourceRepo": "https://github.com/ibranibeny/aro-cli-mcp-workshop",
+      "conversations": [
+        "modernize-confidence",
+        "ubiquitous-innovation"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Workshop",
+      "products": [
+        "Azure Red Hat OpenShift",
+        "OpenShift CLI",
+        "Kubernetes MCP Server",
+        "GitHub Copilot",
+        "Visual Studio Code",
+        "Azure CLI",
+        "Helm"
+      ],
+      "draft": false,
+      "externalUrl": "https://ibranibeny.github.io/aro-cli-mcp-workshop/",
+      "labSlugs": [],
+      "levels": []
+    },
+    {
+      "slug": "visionary-lab-content-generation",
+      "title": "Visionary Lab — Enterprise Content Generation on Azure AI Foundry",
+      "excerpt": "A ready-to-demo studio that turns text prompts and reference images into on-brand images and videos using GPT-Image-1.5, FLUX Kontext Pro, and Sora 2 on Azure AI Foundry — with keyless managed-identity auth, an asset library, and AI-powered quality/brand checks.",
+      "levelRange": "L200–L300",
+      "durationTotal": "",
+      "order": 20,
+      "icon": "",
+      "color": "#a800d6",
+      "conversations": [
+        "ai-flow-human-ambition",
+        "ubiquitous-innovation"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Demo",
+      "products": [
+        "Azure AI Foundry",
+        "GPT-Image-1.5",
+        "FLUX Kontext Pro",
+        "GPT-Image-1-Mini",
+        "Sora 2",
+        "GPT-4o",
+        "Storyboard Pipeline",
+        "Azure Container Apps",
+        "Azure Blob Storage",
+        "Azure Cosmos DB",
+        "Azure Front Door",
+        "Managed Identity"
+      ],
+      "draft": false,
+      "labSlugs": [],
+      "levels": []
     }
   ],
   "labs": [
