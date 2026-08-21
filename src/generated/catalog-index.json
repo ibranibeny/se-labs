@@ -668,6 +668,33 @@
       "draft": false,
       "labSlugs": [],
       "levels": []
+    },
+    {
+      "slug": "dual-hub-site-to-site-vpn-lab-on-azure",
+      "title": "Dual-Hub Site-to-Site VPN Lab on Azure",
+      "excerpt": "Build a simulated on-premises network that reaches two independent Azure hubs over IPsec/IKEv2, and see for yourself what VNet peering can and cannot do for you.",
+      "levelRange": "L400",
+      "durationTotal": "~2 hours",
+      "order": 21,
+      "icon": "fas fa-network-wired",
+      "color": "#0078d4",
+      "sourceSite": "https://ibranibeny.github.io/azure-dual-hub-vpn-lab",
+      "sourceRepo": "https://github.com/ibranibeny/azure-dual-hub-vpn-lab",
+      "conversations": [
+        "amplify-intelligence",
+        "modernize-confidence"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Workshop",
+      "products": [
+        "VPN Site to Site"
+      ],
+      "draft": false,
+      "externalUrl": "https://ibranibeny.github.io/azure-dual-hub-vpn-lab",
+      "labSlugs": [],
+      "levels": []
     }
   ],
   "labs": [
