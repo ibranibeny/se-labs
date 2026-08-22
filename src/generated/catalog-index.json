@@ -365,7 +365,11 @@
       "draft": true,
       "externalUrl": "https://jon-soong-msft.github.io/35-ai-foundry-handson/index.html",
       "labSlugs": [],
-      "levels": []
+      "levels": [
+        100,
+        200,
+        300
+      ]
     },
     {
       "slug": "ai-in-a-day-knowledge-base-agent",
@@ -394,7 +398,10 @@
       ],
       "draft": true,
       "labSlugs": [],
-      "levels": []
+      "levels": [
+        200,
+        300
+      ]
     },
     {
       "slug": "ai-citadel-governance-platform",
@@ -424,7 +431,10 @@
       ],
       "draft": true,
       "labSlugs": [],
-      "levels": []
+      "levels": [
+        300,
+        400
+      ]
     },
     {
       "slug": "talk-to-your-logs-elasticsearch",
@@ -454,7 +464,9 @@
       ],
       "draft": true,
       "labSlugs": [],
-      "levels": []
+      "levels": [
+        300
+      ]
     },
     {
       "slug": "fabric-data-agent-data-to-insight",
@@ -485,7 +497,10 @@
       ],
       "draft": true,
       "labSlugs": [],
-      "levels": []
+      "levels": [
+        200,
+        300
+      ]
     },
     {
       "slug": "fabric-networking-landing-zone",
@@ -513,7 +528,9 @@
       ],
       "draft": true,
       "labSlugs": [],
-      "levels": []
+      "levels": [
+        300
+      ]
     },
     {
       "slug": "purview-data-governance-uam",
@@ -541,7 +558,10 @@
       ],
       "draft": true,
       "labSlugs": [],
-      "levels": []
+      "levels": [
+        200,
+        300
+      ]
     },
     {
       "slug": "cloud-pc-in-a-day",
@@ -567,7 +587,10 @@
       ],
       "draft": true,
       "labSlugs": [],
-      "levels": []
+      "levels": [
+        100,
+        200
+      ]
     },
     {
       "slug": "apim-aca-openai-workshop",
@@ -599,7 +622,9 @@
       "draft": false,
       "externalUrl": "https://ibranibeny.github.io/apim-aca-openai-workshop/",
       "labSlugs": [],
-      "levels": []
+      "levels": [
+        400
+      ]
     },
     {
       "slug": "aro-cli-mcp-workshop",
@@ -632,7 +657,9 @@
       "draft": false,
       "externalUrl": "https://ibranibeny.github.io/aro-cli-mcp-workshop/",
       "labSlugs": [],
-      "levels": []
+      "levels": [
+        300
+      ]
     },
     {
       "slug": "visionary-lab-content-generation",
@@ -667,7 +694,10 @@
       ],
       "draft": false,
       "labSlugs": [],
-      "levels": []
+      "levels": [
+        200,
+        300
+      ]
     },
     {
       "slug": "dual-hub-site-to-site-vpn-lab-on-azure",
@@ -694,7 +724,9 @@
       "draft": false,
       "externalUrl": "https://ibranibeny.github.io/azure-dual-hub-vpn-lab",
       "labSlugs": [],
-      "levels": []
+      "levels": [
+        400
+      ]
     },
     {
       "slug": "azure-localbox-deployment-guide",
@@ -724,7 +756,10 @@
       "draft": false,
       "externalUrl": "https://ibranibeny.github.io/azure-localbox-deployment-guide/",
       "labSlugs": [],
-      "levels": []
+      "levels": [
+        300,
+        400
+      ]
     }
   ],
   "labs": [

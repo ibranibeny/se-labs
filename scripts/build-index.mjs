@@ -14,6 +14,7 @@ const ROOT = path.resolve(__dirname, '..');
 const MOD_DIR = path.join(ROOT, 'src', 'content', 'modules');
 const LAB_DIR = path.join(ROOT, 'src', 'content', 'labs');
 const OUT = path.join(ROOT, 'src', 'generated', 'catalog-index.json');
+const SUPPORTED_LEVELS = [100, 200, 300, 400, 500];
 
 const str = (v, d = '') => (typeof v === 'string' ? v : d);
 const num = (v, d = 0) => (typeof v === 'number' ? v : d);
@@ -24,6 +25,22 @@ const arr = (v) =>
     : typeof v === 'string'
       ? v.split(',').map((s) => s.trim()).filter(Boolean)
       : [];
+
+function deriveLevelsFromRange(levelRange) {
+  const match = str(levelRange)
+    .trim()
+    .toUpperCase()
+    .replace(/[–—]/g, '-')
+    .match(/^L?(\d{3})(?:\s*-\s*L?(\d{3}))?$/);
+
+  if (!match) return [];
+
+  const start = Number(match[1]);
+  const end = Number(match[2] ?? match[1]);
+  const [min, max] = start <= end ? [start, end] : [end, start];
+
+  return SUPPORTED_LEVELS.filter((level) => level >= min && level <= max);
+}
 
 async function readMarkdown(dir) {
   const files = (await fs.readdir(dir)).filter((f) => f.endsWith('.md'));
@@ -59,9 +76,11 @@ async function main() {
   const modules = modsRaw
     .map(({ slug, a }) => {
       const mlabs = labs.filter((l) => l.module === slug);
-      const levels = [...new Set(mlabs.map((l) => l.level).filter((n) => n > 0))].sort(
+      const derivedLabLevels = [...new Set(mlabs.map((l) => l.level).filter((n) => n > 0))].sort(
         (m, n) => m - n,
       );
+      const levels =
+        derivedLabLevels.length > 0 ? derivedLabLevels : deriveLevelsFromRange(a.level_range);
       return {
         slug,
         title: str(a.title),

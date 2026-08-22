@@ -11,7 +11,8 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "build:index": "node scripts/build-index.mjs"
+    "build:index": "node scripts/build-index.mjs",
+    "test:index": "node --test scripts/build-index.test.mjs"
   },
   "dependencies": {
     "front-matter": "^4.0.2",
