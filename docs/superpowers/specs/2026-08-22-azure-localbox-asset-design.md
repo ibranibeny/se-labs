@@ -20,7 +20,9 @@ guide without duplicating its maintained content.
 - GTM conversation: `modernize-confidence`
 - Solution area: `CAIP`
 - Level range: `L300–L400`
+- Duration: `~4–6 hours`
 - Order: `22`, after the current catalog entries
+- Icon: `fas fa-server`
 - Color: Azure blue (`#0078D4`)
 - Products: Azure Local, Azure Arc, AKS Arc, Hyper-V, PowerShell
 
