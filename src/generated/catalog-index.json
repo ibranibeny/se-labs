@@ -695,6 +695,36 @@
       "externalUrl": "https://ibranibeny.github.io/azure-dual-hub-vpn-lab",
       "labSlugs": [],
       "levels": []
+    },
+    {
+      "slug": "azure-localbox-deployment-guide",
+      "title": "Azure LocalBox Deployment Guide",
+      "excerpt": "Deploy and operate Azure Local VM management and AKS Arc with a practical runbook covering control-plane health, networking, image creation, troubleshooting, and PowerShell automation.",
+      "levelRange": "L300–L400",
+      "durationTotal": "~4–6 hours",
+      "order": 22,
+      "icon": "fas fa-server",
+      "color": "#0078D4",
+      "sourceSite": "https://ibranibeny.github.io/azure-localbox-deployment-guide/",
+      "sourceRepo": "https://github.com/ibranibeny/azure-localbox-deployment-guide",
+      "conversations": [
+        "modernize-confidence"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Workshop",
+      "products": [
+        "Azure Local",
+        "Azure Arc",
+        "AKS Arc",
+        "Hyper-V",
+        "PowerShell"
+      ],
+      "draft": false,
+      "externalUrl": "https://ibranibeny.github.io/azure-localbox-deployment-guide/",
+      "labSlugs": [],
+      "levels": []
     }
   ],
   "labs": [
