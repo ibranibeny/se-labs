@@ -31,5 +31,9 @@ test('build-index derives levels for external assets from level_range', async ()
 
   assert.deepStrictEqual(getModule(modules, 'azure-localbox-deployment-guide').levels, [300, 400]);
   assert.deepStrictEqual(getModule(modules, 'apim-aca-openai-workshop').levels, [400]);
+  assert.deepStrictEqual(
+    getModule(modules, 'explore-the-schema-optimize-in-ssms-using-github-copilot').levels,
+    [300],
+  );
   assert.deepStrictEqual(getModule(modules, 'foundry-agent-service-portal').levels, [100, 200, 300]);
 });
