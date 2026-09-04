@@ -760,6 +760,38 @@
         300,
         400
       ]
+    },
+    {
+      "slug": "explore-the-schema-optimize-in-ssms-using-github-copilot",
+      "title": "Explore the schema. Optimize in SSMS using GitHub Copilot",
+      "excerpt": "Learn how GitHub Copilot in SQL Server Management Studio helps a DBA understand an unfamiliar database, investigate an expensive query, and produce a safer optimization—grounded in actual execution plans and Query Store evidence.",
+      "levelRange": "L300",
+      "durationTotal": "~2 hours",
+      "order": 23,
+      "icon": "fas fa-database",
+      "color": "#0078D4",
+      "sourceSite": "https://ibranibeny.github.io/sql-copilot-workshop/",
+      "conversations": [
+        "ai-flow-human-ambition",
+        "ai-ready-productivity",
+        "agentify-processes",
+        "modernize-confidence"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Workshop",
+      "products": [
+        "SQL Server",
+        "SSMS",
+        "GitHub Copilot"
+      ],
+      "draft": false,
+      "externalUrl": "https://ibranibeny.github.io/sql-copilot-workshop/",
+      "labSlugs": [],
+      "levels": [
+        300
+      ]
     }
   ],
   "labs": [
