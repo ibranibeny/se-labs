@@ -35,5 +35,9 @@ test('build-index derives levels for external assets from level_range', async ()
     getModule(modules, 'explore-the-schema-optimize-in-ssms-using-github-copilot').levels,
     [300],
   );
+  assert.deepStrictEqual(
+    getModule(modules, 'content-understanding-build-a-document-app-that-can-explain-itself').levels,
+    [400],
+  );
   assert.deepStrictEqual(getModule(modules, 'foundry-agent-service-portal').levels, [100, 200, 300]);
 });

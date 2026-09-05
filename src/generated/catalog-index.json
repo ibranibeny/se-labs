@@ -792,6 +792,43 @@
       "levels": [
         300
       ]
+    },
+    {
+      "slug": "content-understanding-build-a-document-app-that-can-explain-itself",
+      "title": "Content Understanding - Build a document app that can explain itself.",
+      "excerpt": "Build and operate a document intelligence app that turns unstructured files into grounded, cited answers with Azure Content Understanding, Azure AI Search, and GPT-5.",
+      "levelRange": "L400",
+      "durationTotal": "~3.5–4 hours",
+      "order": 24,
+      "icon": "fas fa-file-alt",
+      "color": "#0078D4",
+      "sourceSite": "https://ibranibeny.github.io/content-understanding-github-workshop/",
+      "sourceRepo": "https://github.com/ibranibeny/content-understanding-rag-demo",
+      "conversations": [
+        "ubiquitous-innovation",
+        "trusted-secure-platform",
+        "modernize-confidence"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Workshop",
+      "products": [
+        "GitHub",
+        "GitHub Copilot",
+        "Azure Content Understanding",
+        "Azure AI Search",
+        "Azure AI Foundry",
+        "GPT-5",
+        "Azure Container Apps",
+        "Bicep"
+      ],
+      "draft": false,
+      "externalUrl": "https://ibranibeny.github.io/content-understanding-github-workshop/",
+      "labSlugs": [],
+      "levels": [
+        400
+      ]
     }
   ],
   "labs": [
