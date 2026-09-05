@@ -41,4 +41,3 @@ validated source citations.
 ## Open the workshop
 
 👉 **[Open the Content Understanding developer workshop ↗](https://ibranibeny.github.io/content-understanding-github-workshop/)**
-
