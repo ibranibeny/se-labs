@@ -829,6 +829,40 @@
       "levels": [
         400
       ]
+    },
+    {
+      "slug": "fabric-nl2gql",
+      "title": "Fabric NL2GQL",
+      "excerpt": "Build a natural-language-to-GQL workflow over ecommerce data with Microsoft Foundry, Azure Container Apps, and Microsoft Fabric Graph, with explicit authorization and offline versus live validation gates.",
+      "levelRange": "L400",
+      "durationTotal": "",
+      "order": 25,
+      "icon": "fas fa-project-diagram",
+      "color": "#117865",
+      "sourceSite": "https://ibranibeny.github.io/fabric-nl2gql-demo/",
+      "sourceRepo": "https://github.com/ibranibeny/fabric-nl2gql-demo",
+      "conversations": [
+        "unified-data-ai-estate",
+        "ubiquitous-innovation"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Workshop",
+      "products": [
+        "Microsoft Fabric",
+        "Fabric Graph",
+        "Microsoft Foundry",
+        "Azure Container Apps",
+        "Fabric Data Agent",
+        "Microsoft Entra ID"
+      ],
+      "draft": true,
+      "externalUrl": "https://ibranibeny.github.io/fabric-nl2gql-demo/",
+      "labSlugs": [],
+      "levels": [
+        400
+      ]
     }
   ],
   "labs": [
