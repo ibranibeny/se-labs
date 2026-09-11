@@ -41,3 +41,20 @@ test('build-index derives levels for external assets from level_range', async ()
   );
   assert.deepStrictEqual(getModule(modules, 'foundry-agent-service-portal').levels, [100, 200, 300]);
 });
+
+test('build-index includes Fabric NL2GQL as an external L400 workshop', async () => {
+  const modules = await buildIndexAndReadModules();
+  const asset = getModule(modules, 'fabric-nl2gql');
+
+  assert.equal(asset.title, 'Fabric NL2GQL');
+  assert.equal(asset.assetType, 'Workshop');
+  assert.equal(asset.draft, true);
+  assert.equal(asset.externalUrl, 'https://ibranibeny.github.io/fabric-nl2gql-demo/');
+  assert.equal(asset.sourceSite, asset.externalUrl);
+  assert.equal(asset.sourceRepo, 'https://github.com/ibranibeny/fabric-nl2gql-demo');
+  assert.deepStrictEqual(asset.levels, [400]);
+  assert.deepStrictEqual(asset.solutionAreas, ['CAIP']);
+  assert.deepStrictEqual(asset.conversations, ['unified-data-ai-estate', 'ubiquitous-innovation']);
+  assert.ok(asset.products.includes('Microsoft Fabric'));
+  assert.deepStrictEqual(asset.labSlugs, []);
+});
