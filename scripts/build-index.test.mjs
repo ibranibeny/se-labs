@@ -58,3 +58,20 @@ test('build-index includes Fabric NL2GQL as an external L400 workshop', async ()
   assert.ok(asset.products.includes('Microsoft Fabric'));
   assert.deepStrictEqual(asset.labSlugs, []);
 });
+
+test('build-index includes Understanding the Agent Harness as an external workshop', async () => {
+  const modules = await buildIndexAndReadModules();
+  const asset = getModule(modules, 'understanding-the-agent-harness');
+
+  assert.equal(asset.title, 'Workshop: Understanding the Agent Harness');
+  assert.equal(asset.assetType, 'Workshop');
+  assert.equal(asset.externalUrl, 'https://ibranibeny.github.io/agent-harness-workshop/');
+  assert.equal(asset.sourceSite, asset.externalUrl);
+  assert.equal(asset.sourceRepo, 'https://github.com/ibranibeny/agent-harness-workshop');
+  assert.equal(asset.durationTotal, '150 minutes + optional 60-minute L400 extension');
+  assert.deepStrictEqual(asset.levels, [400]);
+  assert.deepStrictEqual(asset.solutionAreas, ['CAIP']);
+  assert.deepStrictEqual(asset.conversations, ['ubiquitous-innovation', 'trusted-secure-platform']);
+  assert.ok(asset.products.includes('Microsoft Foundry'));
+  assert.deepStrictEqual(asset.labSlugs, []);
+});
