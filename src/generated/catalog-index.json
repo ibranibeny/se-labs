@@ -863,6 +863,39 @@
       "levels": [
         400
       ]
+    },
+    {
+      "slug": "understanding-the-agent-harness",
+      "title": "Workshop: Understanding the Agent Harness",
+      "excerpt": "Build and inspect a local travel-planning agent with real Microsoft Foundry inference. Explore how an agent harness coordinates tools, conversation state, execution limits, and exact human approval before writes.",
+      "levelRange": "L400",
+      "durationTotal": "150 minutes + optional 60-minute L400 extension",
+      "order": 26,
+      "icon": "fas fa-robot",
+      "color": "#0078D4",
+      "sourceSite": "https://ibranibeny.github.io/agent-harness-workshop/",
+      "sourceRepo": "https://github.com/ibranibeny/agent-harness-workshop",
+      "conversations": [
+        "ubiquitous-innovation",
+        "trusted-secure-platform"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Workshop",
+      "products": [
+        "Microsoft Foundry",
+        "Microsoft Entra ID",
+        "Node.js",
+        "MCP",
+        "WebIQ"
+      ],
+      "draft": false,
+      "externalUrl": "https://ibranibeny.github.io/agent-harness-workshop/",
+      "labSlugs": [],
+      "levels": [
+        400
+      ]
     }
   ],
   "labs": [
