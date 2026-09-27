@@ -896,6 +896,39 @@
       "levels": [
         400
       ]
+    },
+    {
+      "slug": "fabric-inbound-outbound-private-networking",
+      "title": "Fabric inbound & outbound private networking",
+      "excerpt": "Trace two independent private paths: a customer-network client into OneLake through workspace Private Link, and Fabric Spark out to Azure SQL through a managed private endpoint. Verify both the intended access and the public paths that should be blocked.",
+      "levelRange": "L400",
+      "durationTotal": "~4 hours",
+      "order": 27,
+      "icon": "",
+      "color": "#0078d4",
+      "sourceSite": "https://ibranibeny.github.io/workshops/fabric-private-networking-l400/",
+      "conversations": [
+        "ubiquitous-innovation",
+        "amplify-intelligence",
+        "modernize-confidence",
+        "unified-data-ai-estate"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Demo",
+      "products": [
+        "Fabric",
+        "Private Endpoint",
+        "VM",
+        "SQL Server",
+        "Workspace"
+      ],
+      "draft": false,
+      "labSlugs": [],
+      "levels": [
+        400
+      ]
     }
   ],
   "labs": [
