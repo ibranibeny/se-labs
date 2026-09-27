@@ -4,6 +4,7 @@ slug: fabric-inbound-outbound-private-networking
 excerpt: "Trace two independent private paths: a customer-network client into OneLake through workspace Private Link, and Fabric Spark out to Azure SQL through a managed private endpoint. Verify both the intended access and the public paths that should be blocked."
 level_range: "L400"
 duration_total: "~4 hours"
+order: 27
 color: "#0078d4"
 source_site: "https://ibranibeny.github.io/workshops/fabric-private-networking-l400/"
 conversations: [ubiquitous-innovation, amplify-intelligence, modernize-confidence, unified-data-ai-estate]

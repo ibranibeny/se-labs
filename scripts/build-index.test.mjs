@@ -75,3 +75,23 @@ test('build-index includes Understanding the Agent Harness as an external worksh
   assert.ok(asset.products.includes('Microsoft Foundry'));
   assert.deepStrictEqual(asset.labSlugs, []);
 });
+
+test('build-index includes Fabric inbound and outbound private networking demo', async () => {
+  const modules = await buildIndexAndReadModules();
+  const asset = getModule(modules, 'fabric-inbound-outbound-private-networking');
+
+  assert.equal(asset.title, 'Fabric inbound & outbound private networking');
+  assert.equal(asset.assetType, 'Demo');
+  assert.equal(asset.sourceSite, 'https://ibranibeny.github.io/workshops/fabric-private-networking-l400/');
+  assert.equal(asset.durationTotal, '~4 hours');
+  assert.deepStrictEqual(asset.levels, [400]);
+  assert.deepStrictEqual(asset.solutionAreas, ['CAIP']);
+  assert.deepStrictEqual(asset.conversations, [
+    'ubiquitous-innovation',
+    'amplify-intelligence',
+    'modernize-confidence',
+    'unified-data-ai-estate',
+  ]);
+  assert.deepStrictEqual(asset.products, ['Fabric', 'Private Endpoint', 'VM', 'SQL Server', 'Workspace']);
+  assert.deepStrictEqual(asset.labSlugs, []);
+});
