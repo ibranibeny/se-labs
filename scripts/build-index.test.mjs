@@ -95,3 +95,29 @@ test('build-index includes Fabric inbound and outbound private networking demo',
   assert.deepStrictEqual(asset.products, ['Fabric', 'Private Endpoint', 'VM', 'SQL Server', 'Workspace']);
   assert.deepStrictEqual(asset.labSlugs, []);
 });
+
+test('build-index includes Content Processing Tower Inspection extension demo', async () => {
+  const modules = await buildIndexAndReadModules();
+  const asset = getModule(modules, 'content-processing-tower-inspection');
+
+  assert.equal(asset.title, 'Content Processing Gold Standard — Tower Inspection extension');
+  assert.equal(asset.assetType, 'Demo');
+  assert.equal(asset.sourceSite, 'https://aka.ms/CSAGoldStandards/ContentProcessing');
+  assert.equal(asset.sourceRepo, 'https://github.com/jon-soong-msft/content-processing-tower-inspection');
+  assert.equal(asset.durationTotal, '~2 hours');
+  assert.equal(asset.order, 28);
+  assert.deepStrictEqual(asset.levels, [300]);
+  assert.deepStrictEqual(asset.solutionAreas, ['CAIP']);
+  assert.deepStrictEqual(asset.conversations, ['amplify-intelligence', 'agentify-processes']);
+  assert.deepStrictEqual(asset.products, [
+    'Azure AI Content Understanding',
+    'Azure AI Foundry',
+    'GPT-5.1',
+    'Azure Container Apps',
+    'Azure Cosmos DB',
+    'Azure Storage',
+    'Azure Developer CLI',
+  ]);
+  assert.equal(asset.draft, false);
+  assert.deepStrictEqual(asset.labSlugs, []);
+});
