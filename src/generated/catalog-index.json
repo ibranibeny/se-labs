@@ -929,6 +929,40 @@
       "levels": [
         400
       ]
+    },
+    {
+      "slug": "content-processing-tower-inspection",
+      "title": "Content Processing Gold Standard — Tower Inspection extension",
+      "excerpt": "Extend the CSA Gold Standard Content Processing accelerator from auto claims to transmission tower inspection with a single JSON Schema: six anomaly classes, three-level severity, bounding boxes, a media-quality gate and an evidence chain, with no pipeline code changes.",
+      "levelRange": "L300",
+      "durationTotal": "~2 hours",
+      "order": 28,
+      "icon": "",
+      "color": "#0078d4",
+      "sourceSite": "https://aka.ms/CSAGoldStandards/ContentProcessing",
+      "sourceRepo": "https://github.com/jon-soong-msft/content-processing-tower-inspection",
+      "conversations": [
+        "amplify-intelligence",
+        "agentify-processes"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Demo",
+      "products": [
+        "Azure AI Content Understanding",
+        "Azure AI Foundry",
+        "GPT-5.1",
+        "Azure Container Apps",
+        "Azure Cosmos DB",
+        "Azure Storage",
+        "Azure Developer CLI"
+      ],
+      "draft": false,
+      "labSlugs": [],
+      "levels": [
+        300
+      ]
     }
   ],
   "labs": [
