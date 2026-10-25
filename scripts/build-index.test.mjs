@@ -76,6 +76,32 @@ test('build-index includes Understanding the Agent Harness as an external worksh
   assert.deepStrictEqual(asset.labSlugs, []);
 });
 
+test('build-index includes GitHub Copilot: from AI pair programmer to agentic SDLC', async () => {
+  const modules = await buildIndexAndReadModules();
+  const asset = getModule(modules, 'github-copilot-from-ai-pair-programmer-to-agentic-sdlc');
+
+  assert.equal(asset.title, 'GitHub Copilot: from AI pair programmer to agentic SDLC');
+  assert.equal(asset.assetType, 'Workshop');
+  assert.equal(asset.order, 29);
+  assert.equal(asset.durationTotal, '4 hours');
+  assert.equal(
+    asset.externalUrl,
+    'https://ibranibeny.github.io/contoso-ghcp-l400-workshop/',
+  );
+  assert.equal(asset.sourceSite, asset.externalUrl);
+  assert.deepStrictEqual(asset.levels, [400]);
+  assert.deepStrictEqual(asset.solutionAreas, ['CAIP']);
+  assert.deepStrictEqual(asset.conversations, [
+    'ai-flow-human-ambition',
+    'ubiquitous-innovation',
+    'amplify-intelligence',
+    'ai-ready-productivity',
+    'agentify-processes',
+    'modernize-confidence',
+  ]);
+  assert.deepStrictEqual(asset.labSlugs, []);
+});
+
 test('build-index includes Fabric inbound and outbound private networking demo', async () => {
   const modules = await buildIndexAndReadModules();
   const asset = getModule(modules, 'fabric-inbound-outbound-private-networking');
