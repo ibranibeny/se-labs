@@ -963,6 +963,36 @@
       "levels": [
         300
       ]
+    },
+    {
+      "slug": "github-copilot-from-ai-pair-programmer-to-agentic-sdlc",
+      "title": "GitHub Copilot: from AI pair programmer to agentic SDLC",
+      "excerpt": "A four-hour, expert-level workshop for engineers at Contoso. See how GitHub Copilot really works, where it fits next to Microsoft 365 Copilot, and how to build your own agents and skills, then turn them into a full-stack application idea for Contoso. Every lab runs on your own laptop with Docker.",
+      "levelRange": "L400",
+      "durationTotal": "4 hours",
+      "order": 29,
+      "icon": "",
+      "color": "#0078d4",
+      "sourceSite": "https://ibranibeny.github.io/contoso-ghcp-l400-workshop/",
+      "conversations": [
+        "ai-flow-human-ambition",
+        "ubiquitous-innovation",
+        "amplify-intelligence",
+        "ai-ready-productivity",
+        "agentify-processes",
+        "modernize-confidence"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Workshop",
+      "products": [],
+      "draft": false,
+      "externalUrl": "https://ibranibeny.github.io/contoso-ghcp-l400-workshop/",
+      "labSlugs": [],
+      "levels": [
+        400
+      ]
     }
   ],
   "labs": [
