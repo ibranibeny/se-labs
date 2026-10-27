@@ -993,6 +993,40 @@
       "levels": [
         400
       ]
+    },
+    {
+      "slug": "from-business-requirement-to-production-with-github-and-ai",
+      "title": "From business requirement to production with GitHub and AI",
+      "excerpt": "A demo-led workshop for Contoso's engineering, security and IT teams: how GitHub brings planning, GitHub Copilot, built-in security and CI/CD into one developer platform, and what changes as AI moves from suggesting code to doing delegated work.",
+      "levelRange": "L400",
+      "durationTotal": "4 hours",
+      "order": 30,
+      "icon": "",
+      "color": "#0078d4",
+      "sourceSite": "https://ibranibeny.github.io/contoso-github-ai-workshop/index.html",
+      "conversations": [
+        "ai-flow-human-ambition",
+        "ubiquitous-innovation",
+        "amplify-intelligence",
+        "ai-ready-productivity",
+        "agentify-processes",
+        "modernize-confidence",
+        "unified-data-ai-estate"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Workshop",
+      "products": [
+        "GitHub",
+        "GitHub Copilot"
+      ],
+      "draft": true,
+      "externalUrl": "https://ibranibeny.github.io/contoso-github-ai-workshop/index.html",
+      "labSlugs": [],
+      "levels": [
+        400
+      ]
     }
   ],
   "labs": [

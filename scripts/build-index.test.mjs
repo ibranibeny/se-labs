@@ -102,6 +102,37 @@ test('build-index includes GitHub Copilot: from AI pair programmer to agentic SD
   assert.deepStrictEqual(asset.labSlugs, []);
 });
 
+test('build-index includes From business requirement to production with GitHub and AI', async () => {
+  const modules = await buildIndexAndReadModules();
+  const asset = getModule(modules, 'from-business-requirement-to-production-with-github-and-ai');
+
+  assert.equal(asset.title, 'From business requirement to production with GitHub and AI');
+  assert.equal(asset.assetType, 'Workshop');
+  assert.equal(asset.order, 30);
+  assert.equal(asset.levelRange, 'L400');
+  assert.equal(asset.durationTotal, '4 hours');
+  assert.equal(asset.color, '#0078d4');
+  assert.equal(asset.draft, true);
+  assert.equal(
+    asset.externalUrl,
+    'https://ibranibeny.github.io/contoso-github-ai-workshop/index.html',
+  );
+  assert.equal(asset.sourceSite, asset.externalUrl);
+  assert.deepStrictEqual(asset.levels, [400]);
+  assert.deepStrictEqual(asset.solutionAreas, ['CAIP']);
+  assert.deepStrictEqual(asset.conversations, [
+    'ai-flow-human-ambition',
+    'ubiquitous-innovation',
+    'amplify-intelligence',
+    'ai-ready-productivity',
+    'agentify-processes',
+    'modernize-confidence',
+    'unified-data-ai-estate',
+  ]);
+  assert.deepStrictEqual(asset.products, ['GitHub', 'GitHub Copilot']);
+  assert.deepStrictEqual(asset.labSlugs, []);
+});
+
 test('build-index includes Fabric inbound and outbound private networking demo', async () => {
   const modules = await buildIndexAndReadModules();
   const asset = getModule(modules, 'fabric-inbound-outbound-private-networking');
