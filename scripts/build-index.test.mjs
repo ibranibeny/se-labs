@@ -133,6 +133,28 @@ test('build-index includes From business requirement to production with GitHub a
   assert.deepStrictEqual(asset.labSlugs, []);
 });
 
+test('build-index includes DNS Private Resolver as an external draft L400 demo', async () => {
+  const modules = await buildIndexAndReadModules();
+  const slug = 'replace-dns-forwarder-vms-with-azure-dns-private-resolver';
+  const asset = getModule(modules, slug);
+
+  assert.equal(modules.filter((item) => item.slug === slug).length, 1);
+  assert.equal(asset.title, 'Replace DNS forwarder VMs with Azure DNS Private Resolver');
+  assert.equal(asset.assetType, 'Demo');
+  assert.equal(asset.order, 31);
+  assert.equal(asset.levelRange, 'L400');
+  assert.equal(asset.durationTotal, '4 hours');
+  assert.equal(asset.color, '#0078d4');
+  assert.equal(asset.draft, true);
+  assert.equal(asset.externalUrl, 'https://ibranibeny.github.io/contoso-dns-private-resolver-lab/');
+  assert.equal(asset.sourceSite, asset.externalUrl);
+  assert.deepStrictEqual(asset.levels, [400]);
+  assert.deepStrictEqual(asset.solutionAreas, ['CAIP']);
+  assert.deepStrictEqual(asset.conversations, ['amplify-intelligence', 'modernize-confidence']);
+  assert.deepStrictEqual(asset.products, ['GitHub', 'GitHub Copilot']);
+  assert.deepStrictEqual(asset.labSlugs, []);
+});
+
 test('build-index includes Fabric inbound and outbound private networking demo', async () => {
   const modules = await buildIndexAndReadModules();
   const asset = getModule(modules, 'fabric-inbound-outbound-private-networking');
