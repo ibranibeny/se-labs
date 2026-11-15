@@ -155,6 +155,40 @@ test('build-index includes DNS Private Resolver as an external draft L400 demo',
   assert.deepStrictEqual(asset.labSlugs, []);
 });
 
+test('build-index includes the Ship It, Dewi! agent-native SDLC comic workshop', async () => {
+  const modules = await buildIndexAndReadModules();
+  const slug =
+    'learn-github-github-copilot-and-the-agent-native-sdlc-then-live-the-hands-on-workshop-as-a-story-one-click-at-a-time';
+  const asset = getModule(modules, slug);
+
+  assert.equal(modules.filter((item) => item.slug === slug).length, 1);
+  assert.equal(
+    asset.title,
+    'Learn GitHub, GitHub Copilot and the agent-native SDLC. Then live the hands-on workshop as a story, one click at a time.',
+  );
+  assert.equal(asset.assetType, 'Workshop');
+  assert.equal(asset.order, 32);
+  assert.equal(asset.levelRange, 'L400');
+  assert.equal(asset.durationTotal, '~4 hours');
+  assert.equal(asset.color, '#0040d6');
+  assert.equal(asset.externalUrl, 'https://ibranibeny.github.io/gh-agentic-engineering-comic/');
+  assert.equal(asset.sourceSite, asset.externalUrl);
+  assert.equal(asset.sourceRepo, 'https://github.com/ibranibeny/gh-agentic-engineering-comic');
+  assert.deepStrictEqual(asset.levels, [400]);
+  assert.deepStrictEqual(asset.solutionAreas, ['CAIP']);
+  assert.deepStrictEqual(asset.conversations, [
+    'ai-flow-human-ambition',
+    'ubiquitous-innovation',
+    'amplify-intelligence',
+    'ai-ready-productivity',
+    'agentify-processes',
+    'modernize-confidence',
+    'unified-data-ai-estate',
+  ]);
+  assert.deepStrictEqual(asset.products, ['GitHub', 'GitHub Copilot', 'GitHub Codespaces']);
+  assert.deepStrictEqual(asset.labSlugs, []);
+});
+
 test('build-index includes Fabric inbound and outbound private networking demo', async () => {
   const modules = await buildIndexAndReadModules();
   const asset = getModule(modules, 'fabric-inbound-outbound-private-networking');

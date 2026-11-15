@@ -1056,6 +1056,42 @@
       "levels": [
         400
       ]
+    },
+    {
+      "slug": "learn-github-github-copilot-and-the-agent-native-sdlc-then-live-the-hands-on-workshop-as-a-story-one-click-at-a-time",
+      "title": "Learn GitHub, GitHub Copilot and the agent-native SDLC. Then live the hands-on workshop as a story, one click at a time.",
+      "excerpt": "The hands-on workshop, told as a story. Seven episodes, one per chapter, with real screenshots and the key commands. Each one links to the matching chapter so you can do it yourself.",
+      "levelRange": "L400",
+      "durationTotal": "~4 hours",
+      "order": 32,
+      "icon": "",
+      "color": "#0040d6",
+      "sourceSite": "https://ibranibeny.github.io/gh-agentic-engineering-comic/",
+      "sourceRepo": "https://github.com/ibranibeny/gh-agentic-engineering-comic",
+      "conversations": [
+        "ai-flow-human-ambition",
+        "ubiquitous-innovation",
+        "amplify-intelligence",
+        "ai-ready-productivity",
+        "agentify-processes",
+        "modernize-confidence",
+        "unified-data-ai-estate"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Workshop",
+      "products": [
+        "GitHub",
+        "GitHub Copilot",
+        "GitHub Codespaces"
+      ],
+      "draft": false,
+      "externalUrl": "https://ibranibeny.github.io/gh-agentic-engineering-comic/",
+      "labSlugs": [],
+      "levels": [
+        400
+      ]
     }
   ],
   "labs": [
