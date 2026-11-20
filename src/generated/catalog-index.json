@@ -1092,6 +1092,39 @@
       "levels": [
         400
       ]
+    },
+    {
+      "slug": "deploy-azure-service-availability",
+      "title": "Deploy Azure Service Availability",
+      "excerpt": "One command in Azure Cloud Shell builds the whole backend in your subscription: two Azure Functions apps on the Flex Consumption plan, Azure Managed Redis, a locked-down storage account, private networking and monitoring. Then GitHub Pages publishes the dashboard.",
+      "levelRange": "L400",
+      "durationTotal": "~2 hours",
+      "order": 33,
+      "icon": "",
+      "color": "#0078d4",
+      "sourceSite": "https://ibranibeny.github.io/azure-service-availability/deploy.html",
+      "sourceRepo": "https://github.com/ibranibeny/azure-service-availability",
+      "conversations": [
+        "ubiquitous-innovation",
+        "amplify-intelligence",
+        "modernize-confidence"
+      ],
+      "solutionAreas": [
+        "CAIP"
+      ],
+      "assetType": "Demo",
+      "products": [
+        "Azure Functions",
+        "Azure Managed Redis",
+        "Azure Storage",
+        "Private Endpoint"
+      ],
+      "draft": false,
+      "externalUrl": "https://ibranibeny.github.io/azure-service-availability/deploy.html",
+      "labSlugs": [],
+      "levels": [
+        400
+      ]
     }
   ],
   "labs": [
